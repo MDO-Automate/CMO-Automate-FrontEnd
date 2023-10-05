@@ -7,7 +7,7 @@ import { environments  }from '@env/environment'
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'CMO-Automate-FrontEnd';
+  title = 'sas';
 
   constructor(){
     console.log(environments)
