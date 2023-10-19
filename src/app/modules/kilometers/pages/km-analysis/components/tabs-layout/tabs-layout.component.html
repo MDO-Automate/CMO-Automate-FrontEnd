@@ -1,0 +1,21 @@
+<div>
+  <button
+    pButton
+    pRipple
+    class="p-3 bg-blue-500 text-white"
+    label="Subir otra ruta"
+    icon="pi pi-arrow-circle-left"
+    (click)="onChangeRoutes()"
+  ></button>
+  <ng-content></ng-content>
+  <div class="flex justify-end mt-5">
+    <button
+      pButton
+      pRipple
+      class="p-3 bg-blue-500 text-white"
+      label="Guardar"
+      icon="pi pi-save"
+      (click)="submit()"
+    ></button>
+  </div>
+</div>

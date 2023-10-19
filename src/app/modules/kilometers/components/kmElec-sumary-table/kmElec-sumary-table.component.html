@@ -1,0 +1,27 @@
+<p-table [value]="data" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Fecha</th>
+            <th>MDO - 109</th>
+            <th>MDO - 110</th>
+            <th>MDO - 111</th>
+            <th>MDO - 112</th>
+            <th>Distancia total (m)</th>
+            <th>Distancia total (km)</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-km>
+        <tr>
+            <td>{{ km.fecha }}</td>
+            <td>{{ km.mdo109 }}</td>
+            <td>{{ km.mdo110 }}</td>
+            <td>{{ km.mdo111 }}</td>
+            <td>{{ km.mdo112 }}</td>
+            <td>{{ km.totalM }}</td>
+            <td>{{ km.totalKm.toFixed(2) }}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+

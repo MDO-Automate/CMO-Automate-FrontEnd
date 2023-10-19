@@ -1,0 +1,90 @@
+<p-table
+    class="p-10"
+    currentPageReportTemplate="{first} de {last} total {totalRecords}"
+    [resizableColumns]="true"
+    [paginator]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [value]="data"
+    [tableStyle]="{ 'min-width': '50rem' }"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID Sae</th>
+      <th>Vehiculo</th>
+      <th>Tipo</th>
+      <th>Empleado</th>
+      <th>Linea</th>
+      <th>Itinerario</th>
+      <th>Hora salida</th>
+      <th>H-T</th>
+      <th>Inicio servicio</th>
+      <th>Fin servicio</th>
+      <th>Tiempo viaje</th>
+      <th>Distancia</th>
+      <th>Retraso</th>
+      <th>Expedición</th>
+      <th>Inicio servicio efectivo</th>
+      <th>Fin servicio efectivo</th>
+      <th>Tiempo efectivo</th>
+      <th>Retraso</th>
+      <th>PMR</th>
+      <th>% Paradas</th>
+      <th>% Distancia</th>
+      <th>% Tiempo</th>
+      <th>KM 1</th>
+      <th>KM 2</th>
+      <th>KM 3</th>
+      <th>KM 4</th>
+      <th>D < 500</th>
+      <th>D < M y P > 99%</th>
+      <th>D > 0 y P < 5%</th>
+      <th>Fuera de horario</th>
+      <th>Fecha</th>
+      <th *ngIf="isEditing">Observaciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-km>
+    <tr>
+      <td>{{ km.idSae }}</td>
+      <td>{{ km.vehiculo }}</td>
+      <td>{{ km.tipo }}</td>
+      <td>{{ km.empleado }}</td>
+      <td>{{ km.linea }}</td>
+      <td>{{ km.itinerario }}</td>
+      <td>{{ km.horaSalida }}</td>
+      <td>{{ km.ht }}</td>
+      <td>{{ km.inicioServicio }}</td>
+      <td>{{ km.finServicio }}</td>
+      <td>{{ km.tiempoViaje }}</td>
+      <td>{{ km.distancia | number }}</td>
+      <td>{{ km.retraso }}</td>
+      <td>{{ km.expedicion }}</td>
+      <td>{{ km.inicioServicioEfectivo }}</td>
+      <td>{{ km.finServicioEfectivo }}</td>
+      <td>{{ km.tiempoEfectivo }}</td>
+      <td>{{ km.retrasoE }}</td>
+      <td>{{ km.pmr }}</td>
+      <td>{{ km.porcParada }}</td>
+      <td>{{ km.porcDistancia }}</td>
+      <td>{{ km.porcTiempo }}</td>
+      <td>{{ (km.km1 | number) || 0 }}</td>
+      <td>{{ (km.km2 | number) || 0 }}</td>
+      <td>{{ (km.km3 | number) || 0 }}</td>
+      <td>{{ (km.km4 | number) || 0 }}</td>
+      <td>{{ km.minor500 | yesNo }}</td>
+      <td>{{ km.distanciaYMedia | yesNo }}</td>
+      <td>{{ km.distanciaYParadas | yesNo }}</td>
+      <td>{{ km.fueraHorario | yesNo }}</td>
+      <td>{{ km.fecha }}</td>
+      <td *ngIf="isEditing">
+        <textarea
+          class="textarea textarea-bordered textarea-xs w-full max-w-xs"
+          [(ngModel)]="km.obs"
+          rows="5"
+          cols="30"
+        ></textarea>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

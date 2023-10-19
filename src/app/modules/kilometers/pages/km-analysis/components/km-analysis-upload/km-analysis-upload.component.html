@@ -1,0 +1,17 @@
+<div>
+  <p-toast></p-toast>
+  <p-fileUpload
+    mode="basic"
+    chooseLabel="Seleccionar informe de servicio"
+    uploadLabel="Subir informe de servicio"
+    cancelLabel="Cancelar"
+    name="file"
+    [url]="baseUri + '/km-analisis/upload-file'"
+    accept=".xls"
+    [maxFileSize]="1000000"
+    (onError)="showError($event)"
+    (onUpload)="onUploaded($event)"
+    (onSend)="onSendFile()"
+  >
+  </p-fileUpload>
+</div>

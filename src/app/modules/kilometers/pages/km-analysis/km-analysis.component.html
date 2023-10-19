@@ -1,0 +1,55 @@
+<div class="card p-2 bg-base-100 rounded-2xl mb-5">
+  <p-tabView [(activeIndex)]="activeTab">
+
+    <p-tabPanel *ngIf="!lodadedData" header="Cargar archivo">
+      <app-km-analysis-upload
+        (isLoading)="changeIsLoading($event)"
+        (uploaded)="onUploaded($event)"
+      />
+      <div class="mt-10 w-1/2 m-auto" *ngIf="isLoading">
+        <p-progressBar
+          mode="indeterminate"
+          [style]="{ height: '6px' }"
+        ></p-progressBar>
+      </div>
+    </p-tabPanel>
+    
+    <!--  Contenedor de contenido cargado  -->
+    <ng-container *ngIf="lodadedData">
+      <button
+        pButton
+        pRipple
+        class="mb-5 p-3 bg-blue-500 text-white"
+        label="Subir otra ruta"
+        icon="pi pi-arrow-circle-left"
+        (click)="onChangeRoute()"
+      ></button>
+      <p-tabPanel header="Novedades">
+        <app-km-table
+          class="h-screen"
+          [data]="dataAnalysis"
+          [isEditing]="true"
+        />
+      </p-tabPanel>
+      <p-tabPanel header="Detallado">
+        <app-km-table [data]="data" />
+      </p-tabPanel>
+      <p-tabPanel header="Informe general">
+        <app-general-table [data]="generalData" />
+      </p-tabPanel>
+      <p-tabPanel header="Resumen eléctricas">
+        <app-kmElec-sumary-table [data]="dataElectric" />
+      </p-tabPanel>
+      <div class="flex justify-end mt-5">
+        <button
+          pButton
+          pRipple
+          class="p-3 bg-blue-500 text-white"
+          label="Guardar"
+          icon="pi pi-save"
+          (click)="submit()"
+        ></button>
+      </div>
+    </ng-container>
+  </p-tabView>
+</div>
