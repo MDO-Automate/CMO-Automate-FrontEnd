@@ -1,35 +1,30 @@
 <div class="card p-2 bg-base-100 rounded-2xl mb-5">
-  <p-tabView [(activeIndex)]="activeTab">
-
+  <p-toast></p-toast>
+  <p-tabView>
     <p-tabPanel *ngIf="!lodadedData" header="Cargar archivo">
       <app-km-analysis-upload
-        (isLoading)="changeIsLoading($event)"
         (uploaded)="onUploaded($event)"
+        (onLoading)="changeIsLoading($event)"
       />
-      <div class="mt-10 w-1/2 m-auto" *ngIf="isLoading">
-        <p-progressBar
-          mode="indeterminate"
-          [style]="{ height: '6px' }"
-        ></p-progressBar>
-      </div>
     </p-tabPanel>
-    
     <!--  Contenedor de contenido cargado  -->
     <ng-container *ngIf="lodadedData">
-      <button
-        pButton
-        pRipple
-        class="mb-5 p-3 bg-blue-500 text-white"
-        label="Subir otra ruta"
-        icon="pi pi-arrow-circle-left"
-        (click)="onChangeRoute()"
-      ></button>
+      <app-btn-confirm 
+        textPopup="¿Estás seguro que quieres volver? Se eliminará la información que no se haya guardado." 
+        btnText="Subir otra ruta"
+        icon="pi-arrow-circle-left"
+        (accept)="onChangeRoute()"
+      />
       <p-tabPanel header="Novedades">
         <app-km-table
+          *ngIf="dataAnalysis.length > 0"
           class="h-screen"
           [data]="dataAnalysis"
           [isEditing]="true"
         />
+        <h3 *ngIf="dataAnalysis.length < 1">
+          No se encontraron kilómetros para analizar.
+        </h3>
       </p-tabPanel>
       <p-tabPanel header="Detallado">
         <app-km-table [data]="data" />
@@ -41,14 +36,12 @@
         <app-kmElec-sumary-table [data]="dataElectric" />
       </p-tabPanel>
       <div class="flex justify-end mt-5">
-        <button
-          pButton
-          pRipple
-          class="p-3 bg-blue-500 text-white"
-          label="Guardar"
-          icon="pi pi-save"
-          (click)="submit()"
-        ></button>
+        <app-btn-confirm 
+          textPopup="¿Estás seguro que desea guardar la información?" 
+          btnText="Guardar"
+          [icon]="isLoading ? 'pi-spin pi-spinner': 'pi-save'"
+          (accept)="submit()"
+        />
       </div>
     </ng-container>
   </p-tabView>

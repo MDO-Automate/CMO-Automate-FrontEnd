@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { environments } from '@env/environment'
 import { kmElectric } from "@app/core/models/kmElectric";
+import { catchError, of } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -14,5 +15,7 @@ export class KmElectricService {
 
     saveData(data: kmElectric[]){
         return this.http.post(`${this.baseUri}/resumen-electrica`, data[0] )
+            .pipe(catchError(err => of(err)))
+
     }
 }

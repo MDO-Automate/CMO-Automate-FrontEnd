@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { environments } from '@env/environment'
 import { MessageService } from 'primeng/api';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-km-analysis-upload',
@@ -9,8 +10,17 @@ import { MessageService } from 'primeng/api';
 })
 export class KmAnalysisUploadComponent { 
   baseUri = environments.baseUrl
-  @Output() isLoading: EventEmitter<boolean> = new EventEmitter(false)
+  isLoading = false
+  @Output() onLoading: EventEmitter<boolean> = new EventEmitter(false)
   @Output() uploaded: EventEmitter<any> = new EventEmitter()
+  
+  message: Message[] = [
+    { 
+      severity: 'warn', 
+      summary: 'Advertencia', 
+      detail: 'Asegurese de que el archivo a subir tenga la extensión .xls' 
+    }
+  ]
 
   constructor(
     private messageService: MessageService,
@@ -18,12 +28,13 @@ export class KmAnalysisUploadComponent {
 
   onUploaded(evnt: any){
     this.uploaded.emit(evnt)
-    this.isLoading.emit(false)
+    this.onLoading.emit(false)
+    this.isLoading = true
   }  
 
-
   onSendFile(){
-    this.isLoading.emit(true)
+    this.onLoading.emit(true)
+    this.isLoading = true
   }
 
   showError(envt: any) {
@@ -34,6 +45,7 @@ export class KmAnalysisUploadComponent {
         detail: envt.error.error.message 
       }
     )
-    this.isLoading.emit(false)
+    this.onLoading.emit(false)
+    this.isLoading = false
   }
 }

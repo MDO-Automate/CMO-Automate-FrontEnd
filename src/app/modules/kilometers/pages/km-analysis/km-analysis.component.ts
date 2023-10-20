@@ -6,11 +6,12 @@ import { kmGeneral } from '@app/core/models/kmGeneral';
 import { KmAnalysisService } from '../../services/km-analysis.service';
 import { KmGeneralService } from '../../services/km-general.service';
 import { KmElectricService } from '../../services/km-electric.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-km-analysis',
   templateUrl: './km-analysis.component.html',
-  styleUrls: ['./km-analysis.component.css']
+  styleUrls: ['./km-analysis.component.css'],
 })
 export class KmAnalysisComponent {
   baseUri = environments.baseUrl
@@ -22,15 +23,16 @@ export class KmAnalysisComponent {
   generalData: kmGeneral[] = []
   lodadedData : boolean = false
   isLoading: boolean = false
+  requestErrorCount = 0
 
   distanciaSobreMedia = 200
 
   constructor(
     private kmAnalysisService: KmAnalysisService,
     private kmGeneralService: KmGeneralService,
-    private kmElectricService: KmElectricService
+    private kmElectricService: KmElectricService,
+    private messageService: MessageService,
   ){}
-
 
   onUploaded(event: any){
     this.data = event.originalEvent.body.data.analisisKm
@@ -51,9 +53,58 @@ export class KmAnalysisComponent {
   }
 
   submit(){
-    const dataCombonine= [ ...this.dataAnalysis, ...this.dataDetails  ]
-    this.kmAnalysisService.saveData(dataCombonine).subscribe((res) => console.log('Data ', res))
-    this.kmGeneralService.saveData(this.generalData).subscribe((res) => console.log('Data ', res))
-    this.kmElectricService.saveData(this.dataElectric).subscribe(res => console.log('Data ', res))
+    this.isLoading = true
+    this.requestErrorCount = 0
+
+    const dataCombonine = [ ...this.dataAnalysis, ...this.dataDetails  ]
+
+    this.kmAnalysisService.saveData(dataCombonine).subscribe(res => {
+        if(res.error){
+          this.showErrorMessage('análisis de kilómetros')
+          return
+        }
+        this.requestWithoutError()
+
+    })
+    this.kmGeneralService.saveData(this.generalData).subscribe(res => {
+      if(res.error){
+        this.showErrorMessage('informe general')
+        return
+      }
+      this.requestWithoutError()
+    })
+    this.kmElectricService.saveData(this.dataElectric).subscribe(res => {
+      if(res.error){
+        this.showErrorMessage('resumen de electricas')
+        return 
+      }
+      this.requestWithoutError()
+    })
   }
+
+  requestWithoutError(){
+    this.requestErrorCount += 1
+    if(this.requestErrorCount === 3){
+      this.isLoading = false
+      this.messageService.add(
+        { 
+          severity: 'success', 
+          summary: 'Guardado', 
+          detail: 'Se ha guardado la información de forma exitosa.' 
+        }
+      )
+      setTimeout(()=> this.lodadedData = false, 2000)  
+    }
+  }
+
+  showErrorMessage(typeError: string){
+    this.messageService.add(
+      { 
+        severity: 'error', 
+        summary: 'Error', 
+        detail: `No se pudo cargar la información relacionada al ${typeError}, porfavor intentelo más tarde. `
+      }
+    )
+  }
+
 }
