@@ -15,6 +15,7 @@
         icon="pi-arrow-circle-left"
         (accept)="onChangeRoute()"
       />
+      <h2 class="font-bold"> Línea: {{ generalData[0].linea }}  </h2>
       <p-tabPanel header="Novedades">
         <app-km-table
           *ngIf="dataAnalysis.length > 0"
