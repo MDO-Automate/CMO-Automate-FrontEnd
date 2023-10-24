@@ -34,3 +34,13 @@ export interface Kilometers {
     fecha: string
     obs: string
 }
+
+export interface KmFilter {
+    ruta: number,
+    fecha: string,
+    itinerario: number,
+    criterio: number,
+    kmInicial: number,
+    kmFinal : number
+}
+

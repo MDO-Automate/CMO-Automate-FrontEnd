@@ -34,6 +34,15 @@ export class KmAnalysisComponent {
     private messageService: MessageService,
   ){}
 
+  private processResponse(name: string){
+    return {
+      next: ()=> { this.requestWithoutError()},
+      error: () => {
+        this.showErrorMessage(name)
+      }
+    }
+  }
+
   onUploaded(event: any){
     this.data = event.originalEvent.body.data.analisisKm
     this.dataElectric = event.originalEvent.body.data.resumenElec
@@ -58,28 +67,14 @@ export class KmAnalysisComponent {
 
     const dataCombonine = [ ...this.dataAnalysis, ...this.dataDetails  ]
 
-    this.kmAnalysisService.saveData(dataCombonine).subscribe(res => {
-        if(res.error){
-          this.showErrorMessage('análisis de kilómetros')
-          return
-        }
-        this.requestWithoutError()
+    this.kmAnalysisService.saveData(dataCombonine)
+      .subscribe(this.processResponse('análisis de kilómetros'))
 
-    })
-    this.kmGeneralService.saveData(this.generalData).subscribe(res => {
-      if(res.error){
-        this.showErrorMessage('informe general')
-        return
-      }
-      this.requestWithoutError()
-    })
-    this.kmElectricService.saveData(this.dataElectric).subscribe(res => {
-      if(res.error){
-        this.showErrorMessage('resumen de electricas')
-        return 
-      }
-      this.requestWithoutError()
-    })
+    this.kmGeneralService.saveData(this.generalData)
+      .subscribe(this.processResponse('informe general'))
+    
+    this.kmElectricService.saveData(this.dataElectric)
+      .subscribe(this.processResponse('resumen de electricas'))
   }
 
   requestWithoutError(){

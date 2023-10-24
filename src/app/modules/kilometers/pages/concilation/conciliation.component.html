@@ -1,1 +1,16 @@
-<p>conciliation works!</p>
+<app-km-filter />
+<p-tabView>
+    <p-tabPanel header="Kilometros">
+        <h2>Kilometros</h2>
+    </p-tabPanel>
+    <p-tabPanel header="Informe general">
+        <h2>Informe general</h2>
+    </p-tabPanel>
+    <div class="flex justify-end mt-5">
+        <app-btn-confirm 
+            textPopup="¿Estás seguro que desea actualizar la información?" 
+            btnText="Actualizar"
+            [icon]="'pi-save'"
+        />
+    </div>
+</p-tabView>

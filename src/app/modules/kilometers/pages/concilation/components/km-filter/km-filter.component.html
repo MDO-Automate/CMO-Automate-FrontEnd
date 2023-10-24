@@ -1,0 +1,42 @@
+<form  (submit)="submit()" [formGroup]="filterForm" class="mb-5 flex gap-5 items-center">
+    <!--  Rutas  -->
+    <div class="card flex justify-content-center">
+        <p-dropdown 
+            formControlName="ruta" 
+            placeholder="Seleccionar ruta"
+            [required]="true"
+            [options]="lines || []" 
+            optionLabel="nombre"
+            optionValue="id"
+        >
+        </p-dropdown>
+    </div>
+
+    <!--  Fecha  -->
+    <div class="card flex justify-content-center">
+        <p-calendar formControlName="fecha" [showIcon]="true"></p-calendar>
+    </div>
+
+    <!--  Itienrario  -->
+    <div class="card flex justify-content-center">
+        <p-dropdown formControlName="itinerario" [options]="cities" optionLabel="name" placeholder="Seleccionar itinerario"></p-dropdown>
+    </div>
+
+    <!--  Criterio  -->
+    <div class="card flex justify-content-center">
+        <p-dropdown formControlName="criterio" [options]="cities" optionLabel="name" placeholder="Seleccionar criterio"></p-dropdown>
+    </div>
+
+    <!-- Rango de  KM -->
+    <div class="flex gap-5">
+        <div class="flex flex-col">
+            <label for="kmInicial">KM Inicial</label>
+            <p-inputNumber inputId="integeronly" formControlName="kmInicial"></p-inputNumber>
+        </div>
+        <div class="flex flex-col">
+            <label for="kmFinal">KM Final</label>
+            <p-inputNumber inputId="integeronly" formControlName="kmFinal"></p-inputNumber>
+        </div>
+    </div>
+    <p-button type="btn" class="mb-5 p-3 bg-blue-500 text-white rounded-xl" label="Filtrar"></p-button>
+</form>

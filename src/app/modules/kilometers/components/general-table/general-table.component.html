@@ -15,17 +15,16 @@
     </ng-template>
     <ng-template pTemplate="body" let-km>
         <tr>
-
             <td>{{ km.fecha }}</td>
-            <td>{{ km.itinerario1 }}</td>
-            <td>{{ km.itinerario2 }}</td>
-            <td>{{ km.itinerario3 }}</td>
-            <td>{{ km.itinerario4 }}</td>
-            <td>{{ km.total }}</td>
+            <td>{{ km.itinerario1.toFixed(2) }}</td>
+            <td>{{ km.itinerario2.toFixed(2) }}</td>
+            <td>{{ km.itinerario3.toFixed(2) }}</td>
+            <td>{{ km.itinerario4.toFixed(2) }}</td>
+            <td>{{ km.total.toFixed(2)  }}</td>
             <td>{{ km.datos }}</td>
             <td>{{ km.totalT }}</td>
             <td>{{ km.flotaElect }}</td>
-            <td>{{ km.totalSinElect }}</td>
+            <td>{{ km.totalSinElect.toFixed(2) }}</td>
         </tr>
     </ng-template>
 </p-table>

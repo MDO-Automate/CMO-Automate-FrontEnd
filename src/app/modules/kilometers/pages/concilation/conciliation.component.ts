@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./conciliation.component.css']
 })
 export class ConciliationComponent {
-
+ 
 }

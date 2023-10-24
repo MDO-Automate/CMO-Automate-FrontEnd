@@ -3,12 +3,11 @@ import { HttpClient } from "@angular/common/http";
 
 import { environments } from '@env/environment'
 import { Kilometers } from "@app/core/models/kilometers";
-import { catchError, of } from "rxjs";
+import { catchError, throwError } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
-
 export class KmAnalysisService {
     private baseUri = environments.baseUrl
 
@@ -16,7 +15,7 @@ export class KmAnalysisService {
 
     saveData(data: Kilometers[]){
       return this.http.post(`${this.baseUri}/km-analisis`, { data } )
-            .pipe(catchError(err => of(err)))
+      .pipe(catchError(err =>  throwError(()=> err)))
 
     }
 }

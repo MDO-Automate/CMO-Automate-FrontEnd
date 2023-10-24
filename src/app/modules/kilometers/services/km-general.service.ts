@@ -3,12 +3,11 @@ import { HttpClient } from "@angular/common/http";
 
 import { environments } from '@env/environment'
 import { kmGeneral } from "@app/core/models/kmGeneral";
-import { catchError, of } from "rxjs";
+import { catchError, throwError } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
-
 export class KmGeneralService {
     private baseUri = environments.baseUrl
 
@@ -16,7 +15,6 @@ export class KmGeneralService {
 
     saveData(data: kmGeneral[]){
         return this.http.post(`${this.baseUri}/informe-general`, data[0] )
-            .pipe(catchError(err => of(err)))
-
+            .pipe(catchError(err =>  throwError(()=> err)))
     }
 }
