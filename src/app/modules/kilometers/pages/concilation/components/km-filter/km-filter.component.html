@@ -14,17 +14,24 @@
 
     <!--  Fecha  -->
     <div class="card flex justify-content-center">
-        <p-calendar formControlName="fecha" [showIcon]="true"></p-calendar>
+        <p-calendar dataType="string" dateFormat="yy-mm-dd" formControlName="fecha" [showIcon]="true"></p-calendar>
     </div>
 
     <!--  Itienrario  -->
     <div class="card flex justify-content-center">
-        <p-dropdown formControlName="itinerario" [options]="cities" optionLabel="name" placeholder="Seleccionar itinerario"></p-dropdown>
+        <p-dropdown 
+            formControlName="itinerario"
+            optionLabel="nombre" 
+            optionValue="id"
+            placeholder="Seleccionar itinerario"
+            [options]="itineraries || []" 
+        >
+        </p-dropdown>
     </div>
 
     <!--  Criterio  -->
     <div class="card flex justify-content-center">
-        <p-dropdown formControlName="criterio" [options]="cities" optionLabel="name" placeholder="Seleccionar criterio"></p-dropdown>
+        <p-dropdown formControlName="criterio" [options]=" criteries|| []" optionValue="id" optionLabel="nombre" placeholder="Seleccionar criterio"></p-dropdown>
     </div>
 
     <!-- Rango de  KM -->
