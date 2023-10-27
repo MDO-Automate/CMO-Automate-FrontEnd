@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Criteria } from '@app/core/models/criteria';
 import { Itinerary } from '@app/core/models/itinerary';
 import { KmFilter } from '@app/core/models/kilometers';
@@ -19,10 +19,11 @@ export class KmFilterComponent implements OnInit {
   lines: Routes[] | null = null
   itineraries : Itinerary[] | null = null
   criteries: Criteria[] | null = null
+  formError = false
 
   filterForm : FormGroup = this.fb.group({
-    ruta: [null],
-    fecha: [null],
+    ruta: [null, Validators.required],
+    fecha: [null, Validators.required],
     itinerario: [null],
     criterio: [null],
     kmInicial: [null],
@@ -32,7 +33,6 @@ export class KmFilterComponent implements OnInit {
   
   constructor(
     private fb: FormBuilder,
-    private kmAnalysisService: KmAnalysisService,
     private routesService: RoutesService,
     private itinerariesService: ItinerariesService,
     private criteriesService: CriteriesService
@@ -50,20 +50,16 @@ export class KmFilterComponent implements OnInit {
     })
   }
 
-  cities = [
-        { name: 'New York', code: 'NY' },
-        { name: 'Rome', code: 'RM' },
-        { name: 'London', code: 'LDN' },
-        { name: 'Istanbul', code: 'IST' },
-        { name: 'Paris', code: 'PRS' }
-  ];
+  clear(){
+    this.filterForm.reset()
+  }
 
   submit(){
-    console.log(this.filterForm.value)
-    this.kmAnalysisService.multiFilter(this.filterForm.value).subscribe({
-      next: (data)=> console.log(data)
-    })
-    this.onDataFilter.emit(this.filterForm.value)
+    if(this.filterForm.valid){
+      this.onDataFilter.emit(this.filterForm.value)
+      return
+    }
+    this.formError = true
   }
 
 

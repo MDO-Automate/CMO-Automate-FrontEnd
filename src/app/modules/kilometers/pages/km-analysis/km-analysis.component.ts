@@ -45,6 +45,13 @@ export class KmAnalysisComponent {
 
   onUploaded(event: any){
     this.data = event.originalEvent.body.data.analisisKm
+    this.data = this.data.map(item => ({
+      ...item,
+      km1: item.km1 || 0,
+      km2: item.km2 || 0,
+      km3: item.km3 || 0,
+      km4: item.km4 || 0
+    }))
     this.dataElectric = event.originalEvent.body.data.resumenElec
     this.generalData = event.originalEvent.body.data.resumenGeneral
     this.dataAnalysis = this.data.filter(item =>  item.distancia > (item.media + this.distanciaSobreMedia))

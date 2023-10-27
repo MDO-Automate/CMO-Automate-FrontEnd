@@ -35,12 +35,15 @@ export interface Kilometers {
     obs: string
 }
 
+
+
 export interface KmFilter {
-    ruta: number,
+    [any: string]: any
+    ruta: number
     fecha: string,
-    itinerario: number,
-    criterio: number,
-    kmInicial: number,
+    itinerario: number
+    criterio: number
+    kmInicial: number
     kmFinal : number
 }
 

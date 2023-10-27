@@ -41,11 +41,12 @@
       <th>D > 0 y P < 5%</th>
       <th>Fuera de horario</th>
       <th>Fecha</th>
-      <th *ngIf="isEditing">Observaciones</th>
+      <th *ngIf="isEditable || isConciliation ">Observaciones</th>
+      <th *ngIf="isConciliation" >Conciliado</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-km>
-    <tr>
+    <tr >
       <td>{{ km.idSae }}</td>
       <td>{{ km.vehiculo }}</td>
       <td>{{ km.tipo }}</td>
@@ -54,36 +55,72 @@
       <td>{{ km.itinerario }}</td>
       <td>{{ km.horaSalida }}</td>
       <td>{{ km.ht }}</td>
-      <td>{{ km.inicioServicio }}</td>
-      <td>{{ km.finServicio }}</td>
+      <td>{{ km.inicioServicio | dateTime  }}</td>
+      <td>{{ km.finServicio | dateTime }}</td>
       <td>{{ km.tiempoViaje }}</td>
       <td>{{ km.distancia | number }}</td>
       <td>{{ km.retraso }}</td>
       <td>{{ km.expedicion }}</td>
-      <td>{{ km.inicioServicioEfectivo }}</td>
-      <td>{{ km.finServicioEfectivo }}</td>
+      <td>{{ km.inicioServicioEfectivo | dateTime }}</td>
+      <td>{{ km.finServicioEfectivo | dateTime  }}</td>
       <td>{{ km.tiempoEfectivo }}</td>
       <td>{{ km.retrasoE }}</td>
       <td>{{ km.pmr }}</td>
       <td>{{ km.porcParada }}</td>
       <td>{{ km.porcDistancia }}</td>
       <td>{{ km.porcTiempo }}</td>
-      <td>{{ (km.km1 | number) || 0 }}</td>
-      <td>{{ (km.km2 | number) || 0 }}</td>
-      <td>{{ (km.km3 | number) || 0 }}</td>
-      <td>{{ (km.km4 | number) || 0 }}</td>
+      <td>
+        <p-inputNumber 
+          [disabled]="!isConciliation"
+          class="w-20"
+          inputStyleClass="w-20"
+          [(ngModel)]="km.km1" 
+          inputId="integeronly">
+        </p-inputNumber> 
+      </td>
+      <td>
+        <p-inputNumber 
+          [disabled]="!isConciliation"
+          class="w-20"
+          inputStyleClass="w-20"
+          [(ngModel)]="km.km2" 
+          inputId="integeronly">
+        </p-inputNumber> 
+      </td>
+      <td>
+        <p-inputNumber 
+          [disabled]="!isConciliation"
+          class="w-20"
+          inputStyleClass="w-20"
+          [(ngModel)]="km.km3" 
+          inputId="integeronly">
+        </p-inputNumber>
+      </td>
+      <td>
+        <p-inputNumber 
+          [disabled]="!isConciliation"
+          class="w-20"
+          inputStyleClass="w-20"
+          [(ngModel)]="km.km4"
+          inputId="integeronly">
+        </p-inputNumber> 
+      </td>
       <td>{{ km.minor500 | yesNo }}</td>
       <td>{{ km.distanciaYMedia | yesNo }}</td>
       <td>{{ km.distanciaYParadas | yesNo }}</td>
       <td>{{ km.fueraHorario | yesNo }}</td>
       <td>{{ km.fecha }}</td>
-      <td *ngIf="isEditing">
+      <td *ngIf="isEditable || isConciliation">
         <textarea
           class="textarea textarea-bordered textarea-xs w-full max-w-xs h-5 resize-none"
           [(ngModel)]="km.obs"
           rows="5"
           cols="30"
         ></textarea>
+      </td>
+      <td *ngIf="isConciliation">
+        <p-checkbox [(ngModel)]="km.conciliado" >
+        </p-checkbox>
       </td>
     </tr>
   </ng-template>

@@ -18,39 +18,20 @@ export class KmAnalysisService {
       .pipe(catchError(err =>  throwError(()=> err)))
     }
 
+    updateData(data: Kilometers[]){
+        return this.http.patch(`${this.baseUri}/km-analisis`, { data } )
+        .pipe(catchError(err =>  throwError(()=> err)))
+    }
+
     multiFilter(filter: KmFilter){
-        const { 
-            ruta,
-            fecha,
-            itinerario,
-            criterio,
-            kmInicial,
-            kmFinal
-        } = filter
-        
-        const queryKeys = [
-            {
-                name:'itinerario',
-                value: itinerario
-            },
-            {
-                name: 'criterio',
-                value: criterio
-            },
-            {
-                name:'kmInicial',
-                value: kmInicial
-            },
-            {
-                name: 'kmFinal',
-                value: kmFinal
-            }
-        ]
 
-        const query = queryKeys.map(item => !item.value ? '': `&${item.name}=${item.value}`).join('')
+        const queryList = Object.keys(filter).map(
+          item => !filter[item]? '-': `${item}=${filter[item]}`
+        )
+        const queryString = queryList.join('&').replace(/&-/g, '')
 
-        return this.http.get(
-            `${this.baseUri}/km-analisis/filter?ruta=${ruta}&fecha=${fecha}${query}`
+        return this.http.get<Kilometers[]>(
+            `${this.baseUri}/km-analisis/filter?${queryString}`
         ).pipe(
             catchError(err =>  throwError(()=> err))
         )

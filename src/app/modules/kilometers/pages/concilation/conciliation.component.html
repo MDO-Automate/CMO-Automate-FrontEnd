@@ -1,16 +1,26 @@
-<app-km-filter />
+<app-km-filter (onDataFilter)="onFilter($event)"/>
 <p-tabView>
     <p-tabPanel header="Kilometros">
-        <h2>Kilometros</h2>
+       <app-km-table [isConciliation]="true" [data]="kmConciliation" />
     </p-tabPanel>
     <p-tabPanel header="Informe general">
-        <h2>Informe general</h2>
+       <app-general-table [data]="kmGeneral" />
     </p-tabPanel>
-    <div class="flex justify-end mt-5">
+    <div 
+        *ngIf="kmConciliation.length > 0" 
+        class="flex justify-end mt-5 gap-5"
+    >
+        <app-btn-confirm 
+        textPopup="¿Estás seguro que desea cancelar? Se quitará la información filtrada."
+        btnText="Cancelar"
+        icon="pi-times-circle"
+        (accept)="onRemove()"
+        />
         <app-btn-confirm 
             textPopup="¿Estás seguro que desea actualizar la información?" 
             btnText="Actualizar"
-            [icon]="'pi-save'"
+            icon="pi-save"
+            (accept)="onUpdate()"
         />
     </div>
 </p-tabView>

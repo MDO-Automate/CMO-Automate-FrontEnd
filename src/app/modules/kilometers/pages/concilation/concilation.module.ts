@@ -13,6 +13,8 @@ import { KmFilterComponent } from './components/km-filter/km-filter.component';
 import { ConciliationComponent } from './conciliation.component'
 import { BtnConfirmComponent } from '@app/modules/shared/components/btn-confirm/btn-confirm.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { KmTableComponent } from '../../components/km-table/km-table.component';
+import { GeneralTableComponent } from '../../components/general-table/general-table.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CalendarModule,
     InputNumberModule,
     ButtonModule,
-    BtnConfirmComponent
+    BtnConfirmComponent,
+    KmTableComponent,
+    GeneralTableComponent
   ]
 })
 export class ConcilationModule { }
