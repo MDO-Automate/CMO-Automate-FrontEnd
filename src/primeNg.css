@@ -1,0 +1,74 @@
+/*  TABS */
+@layer primeng {
+  .p-tabview .p-tabview-nav {
+    border-width: 0 0 2px 0 !important;
+  }
+}
+
+@layer primeng {
+  .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background: #ffffff;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+  }
+}
+
+@layer primeng {
+  .p-tabview .p-tabview-nav {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-width: 0 0 2px 0;
+  }
+}
+@layer primeng {
+  .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    border: solid #dee2e6 !important;
+    border-top-width: medium !important;
+    border-top-color: rgb(222, 226, 230) !important;
+    border-right-width: medium !important;
+    border-right-color: rgb(222, 226, 230) !important;
+    border-bottom-width: medium !important;
+    border-bottom-color: rgb(222, 226, 230) !important;
+    border-left-width: medium !important;
+    border-left-color: rgb(222, 226, 230) !important;
+    border-width: 0 0 2px 0 !important;
+    border-color: transparent transparent #dee2e6 transparent !important;
+    background: #ffffff !important;
+    color: #6c757d !important;
+    padding: 1.25rem !important;
+    font-weight: 700 !important;
+    border-top-right-radius: 6px !important;
+    border-top-left-radius: 6px !important;
+    transition: box-shadow 1s !important;
+    margin: 0 0 -2px 0 !important;
+  }
+}
+
+/* DatePicker Component  */
+@layer primeng {
+  .p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-year,
+  .p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-month {
+    padding: 0.5rem !important;
+  }
+}
+
+/*  Check conciliación */
+@layer primeng {
+  .p-checkbox .p-checkbox-box.p-highlight {
+    border-color: var(--primary-color) !important;
+    background: var(--primary-color) !important;
+  }
+}
+
+
+/* Row table */
+@layer primeng {
+  .p-datatable-resizable-table > .p-datatable-thead > tr > th, .p-datatable-resizable-table > .p-datatable-tfoot > tr > td, .p-datatable-resizable-table > .p-datatable-tbody > tr > td {
+    overflow: initial !important;
+    white-space: nowrap;
+  }
+}

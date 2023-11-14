@@ -7,7 +7,10 @@
     <li>3. Haz clic en el botón "Subir informe de servicio" que aparece posteriormente de seleccionar el archivo.</li>
   </ul>
   <p-fileUpload
+    styleClass="bg-primary"
     mode="basic"
+    invalidFileTypeMessageDetail="debe de tener la extensión .xls"
+    invalidFileTypeMessageSummary="Tipo de archivo invalido,"
     chooseLabel="Seleccionar informe de servicio"
     uploadLabel="Subir informe de servicio"
     cancelLabel="Cancelar"
@@ -23,7 +26,8 @@
   <div class="mt-10 w-1/2 m-auto" *ngIf="isLoading">
     <p-progressBar
       mode="indeterminate"
-      [style]="{ height: '6px' }"
+      color="#84A215"
+      [style]="{ height: '6px'}"
     ></p-progressBar>
   </div>
   <p-messages 

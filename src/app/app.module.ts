@@ -10,7 +10,7 @@ import { HeaderComponent } from './modules/shared/components/header/header.compo
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [ AppComponent ],
   imports: [
     HeaderComponent,
     BrowserModule,

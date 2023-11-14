@@ -6,6 +6,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
+import { ToastModule }        from 'primeng/toast'
 
 import { ConcilationRoutingModule } from './concilation-routing.module'
 
@@ -15,6 +16,7 @@ import { BtnConfirmComponent } from '@app/modules/shared/components/btn-confirm/
 import { ReactiveFormsModule } from '@angular/forms';
 import { KmTableComponent } from '../../components/km-table/km-table.component';
 import { GeneralTableComponent } from '../../components/general-table/general-table.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,11 @@ import { GeneralTableComponent } from '../../components/general-table/general-ta
     ButtonModule,
     BtnConfirmComponent,
     KmTableComponent,
-    GeneralTableComponent
+    GeneralTableComponent,
+    ToastModule
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class ConcilationModule { }

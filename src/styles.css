@@ -2,11 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "primeng/resources/primeng.css";
-@import "primeng/resources/themes/saga-green/theme.css";
-@import "primeicons/primeicons.css";
 
+@import "primeng/resources/primeng.min.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeicons/primeicons.css";
+@import "./primeNg.css";
+
+
+:root {
+    --primary-color: #84A215;
+    --neutral-color: #b5b5b5;
+}
+
+button:focus {
+    outline: none;
+  }
 
 .content {
-    max-width: 95%;
+    max-width: 98%;
 }
+

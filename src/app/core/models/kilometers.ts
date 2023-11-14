@@ -31,8 +31,10 @@ export interface Kilometers {
     distanciaYMedia: boolean
     distanciaYParadas: boolean
     fueraHorario: boolean
+    malEnrutado: boolean
     fecha: string
     obs: string
+    incidencia: number
 }
 
 

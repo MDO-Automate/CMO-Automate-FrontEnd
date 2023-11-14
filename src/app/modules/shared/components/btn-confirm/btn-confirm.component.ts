@@ -28,6 +28,8 @@ export class BtnConfirmComponent {
 
   confirm(event: Event) {
     this.confirmationService.confirm({
+        rejectButtonStyleClass:'bg-primary text-white py-1 px-2',
+        acceptButtonStyleClass:'bg-primary text-white py-1 px-2 ml-2',
         acceptLabel: 'Sí',
         rejectLabel: 'No',
         target: event.target as EventTarget,

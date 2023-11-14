@@ -1,4 +1,7 @@
-<app-km-filter (onDataFilter)="onFilter($event)"/>
+<p-toast></p-toast>
+<div class="pt-6">
+    <app-km-filter class="pt-5" (onDataFilter)="onFilter($event)"/>
+</div>
 <p-tabView>
     <p-tabPanel header="Kilometros">
        <app-km-table [isConciliation]="true" [data]="kmConciliation" />
@@ -11,10 +14,10 @@
         class="flex justify-end mt-5 gap-5"
     >
         <app-btn-confirm 
-        textPopup="¿Estás seguro que desea cancelar? Se quitará la información filtrada."
-        btnText="Cancelar"
-        icon="pi-times-circle"
-        (accept)="onRemove()"
+            textPopup="¿Estás seguro que desea cancelar? Se quitará la información filtrada."
+            btnText="Cancelar"
+            icon="pi-times-circle"
+            (accept)="onRemove()"
         />
         <app-btn-confirm 
             textPopup="¿Estás seguro que desea actualizar la información?" 

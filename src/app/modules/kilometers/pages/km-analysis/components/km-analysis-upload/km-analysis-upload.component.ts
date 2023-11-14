@@ -11,9 +11,6 @@ import { Message } from 'primeng/api';
 export class KmAnalysisUploadComponent { 
   baseUri = environments.baseUrl
   isLoading = false
-  @Output() onLoading: EventEmitter<boolean> = new EventEmitter(false)
-  @Output() uploaded: EventEmitter<any> = new EventEmitter()
-  
   message: Message[] = [
     { 
       severity: 'warn', 
@@ -22,6 +19,9 @@ export class KmAnalysisUploadComponent {
     }
   ]
 
+  @Output() onLoading: EventEmitter<boolean> = new EventEmitter(false)
+  @Output() uploaded: EventEmitter<any> = new EventEmitter()
+  
   constructor(
     private messageService: MessageService,
   ){}
