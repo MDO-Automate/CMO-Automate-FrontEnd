@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Kilometers } from '@app/core/models/kilometers';
 import { YesNoPipe } from '@app/modules/shared/pipes/yes-no.pipe';
@@ -9,6 +9,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { KmIncidenciaService } from '../../services/km-incidencias.service';
+import { DatePipe } from '../../pipes/date.pipe';
 
 @Component({
   standalone: true,
@@ -21,6 +22,7 @@ import { KmIncidenciaService } from '../../services/km-incidencias.service';
     FormsModule,
     YesNoPipe,
     DateTimePipe,
+    DatePipe,
     InputNumberModule,
     CheckboxModule,
     DropdownModule,
@@ -33,32 +35,22 @@ export class KmTableComponent implements OnInit {
 
   incidences: any[] = []
 
-  constructor(private kmIncidenciaService: KmIncidenciaService ){}
-
-  cities = [
-    { name: 'New York', code: 'NY' },
-    { name: 'Rome', code: 'RM' },
-    { name: 'London', code: 'LDN' },
-    { name: 'Istanbul', code: 'IST' },
-    { name: 'Paris', code: 'PRS' },
-  ];
+  constructor(private kmIncidenciaService: KmIncidenciaService) { }
 
   ngOnInit(): void {
     this.getIncidences()
+
   }
 
-  getIncidences(){
-    this.kmIncidenciaService.findAll().subscribe((data)=>{
-      this.incidences = data.map((item)=> {
-        return {
-          ...item,
-          incidencia : this.getIncidenceSelected(item.incidencia)
-        }
-      })
+  getIncidences() {
+    this.kmIncidenciaService.findAll().subscribe((data) => {
+      this.incidences = data
     })
   }
 
-  getIncidenceSelected(id: number){
-    return this.incidences.filter((item: any) => item.id === id)
+  changeValue(event: any, obsInput: HTMLTextAreaElement){
+    if(event !== 1){
+      obsInput.value ='true'
+    }
   }
 }

@@ -116,20 +116,32 @@
       <td>{{ km.distanciaYParadas | yesNo }}</td>
       <td>{{ km.fueraHorario | yesNo }}</td>
       <td>{{ km.malEnrutado | yesNo }}</td>
-      <td>{{ km.fecha }}</td>
-      <td>
+      <td>{{ km.fecha | date }}</td>
+      <td *ngIf="isEditable">
         <div class="card flex justify-content-center ">
           <p-dropdown
             [options]="incidences"
             optionLabel="nombre"
             optionValue="id"
-            placeholder="Seleccionar"
-            [(ngModel)]="km.indicidencia"
+            styleClass="w-52 border "
+            [(ngModel)]="km.incidencia"
+          ></p-dropdown>
+        </div>
+      </td>
+      <td *ngIf="isConciliation">
+        <div class="card flex justify-content-center ">
+          <p-dropdown
+            [options]="incidences"
+            optionLabel="nombre"
+            optionValue="id"
+            styleClass="w-52 border "
+            [(ngModel)]="km.incidencia.id"
           ></p-dropdown>
         </div>
       </td>
       <td *ngIf="isEditable || isConciliation">
-        <textarea
+        <textarea  
+          [disabled]="!(km.incidencia !== 1) || !(km.incidencia.id !== 1)"      
           class="textarea textarea-bordered textarea-xs w-full max-w-xs h-5 resize-none"
           [(ngModel)]="km.obs"
           rows="5"

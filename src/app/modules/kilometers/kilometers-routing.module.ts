@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'analisis-km',
+    path: '',
     loadChildren: () => import('../kilometers/pages/km-analysis/km-analysis.module').then(m => m.KmAnalysisModule)
   },
   {

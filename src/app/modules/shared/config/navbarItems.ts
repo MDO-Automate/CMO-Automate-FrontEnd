@@ -3,10 +3,10 @@ import { NavbarItem } from "../interfaces/navbar.interface";
 export const navbarItems: NavbarItem[] = [
     {
         name: 'Análisis de kilómetros',
-        link: 'kilometros/analisis-km'
+        link: ''
     },
     {
         name: 'Conciliación',
-        link: 'kilometros/conciliacion'
+        link: 'conciliacion'
     }
 ]

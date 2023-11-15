@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'kilometros',
+    path: '',
     loadChildren: ()=> import('./modules/kilometers/kilometers.module').then(m => m.KilometersModule)
   }
 ];
