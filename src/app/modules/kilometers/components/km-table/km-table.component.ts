@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Kilometers } from '@app/core/models/kilometers';
 import { YesNoPipe } from '@app/modules/shared/pipes/yes-no.pipe';
@@ -46,11 +46,5 @@ export class KmTableComponent implements OnInit {
     this.kmIncidenciaService.findAll().subscribe((data) => {
       this.incidences = data
     })
-  }
-
-  changeValue(event: any, obsInput: HTMLTextAreaElement){
-    if(event !== 1){
-      obsInput.value ='true'
-    }
   }
 }
