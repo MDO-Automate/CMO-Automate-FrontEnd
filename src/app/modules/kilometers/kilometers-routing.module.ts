@@ -4,11 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('../kilometers/pages/km-analysis/km-analysis.module').then(m => m.KmAnalysisModule)
+    loadChildren: () => import('./pages/km-analysis/km-analysis.module').then(m => m.KmAnalysisModule)
   },
   {
     path: 'conciliacion',
-    loadChildren: () => import('../kilometers/pages/concilation/concilation.module').then(m => m.ConcilationModule)
+    loadChildren: () => import('./pages/concilation/concilation.module').then(m => m.ConcilationModule)
+  },
+  {
+    path: 'circulacion',
+    loadChildren: () => import('./pages/circulation/circulation.module').then(m => m.CiculationModule)
   }
 ];
 
@@ -16,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class KilometersRoutingModule { }
+export class KilometersRoutingModule {}

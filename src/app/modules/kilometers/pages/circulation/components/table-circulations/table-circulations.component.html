@@ -1,0 +1,37 @@
+<p-table
+  [showCurrentPageReport]="true"
+  [paginator]="true" [rows]="10"
+  currentPageReportTemplate="{first} de {last} total {totalRecords}"
+  tableStyleClass="border"
+  class="p-10"
+  [value]="data"
+  [resizableColumns]="true"
+  >
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-center">Circulación</th>
+      <th class="text-center">Linea</th>
+      <th class="text-center">Acciones</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-circulation>
+    <tr>
+      <td class="text-center">{{ circulation.circulacion }}</td>
+      <td class="text-center">{{ circulation.linea.nombre }}</td>
+      <td class="flex gap-5 justify-center">
+        <app-button-primary (onClick)="onEdit(circulation.circulacion)"  icon="pencil" class="pt-5" textLabel="" />
+        <app-button-primary  icon="trash" class="pt-5" textLabel="" />
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>
+<app-modal-circulations
+[circulation]="circulation"
+  title="Editar registro"
+  (close)="closeModal()"
+  [visible]="modalIsVisible"
+/>
+
+

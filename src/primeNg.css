@@ -72,3 +72,7 @@
     white-space: nowrap;
   }
 }
+
+.p-dialog-content {
+  overflow-y: initial !important;
+}
