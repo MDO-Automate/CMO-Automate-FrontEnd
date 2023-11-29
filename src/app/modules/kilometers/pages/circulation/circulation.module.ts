@@ -15,6 +15,7 @@ import { ToastModule } from 'primeng/toast';
 import { CommonModule } from "@angular/common";
 
 import { MessageService } from 'primeng/api';
+import { BtnConfirmComponent } from "@app/modules/shared/components/btn-confirm/btn-confirm.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MessageService } from 'primeng/api';
     CirculationRoutingModule,
     TableModule,
     ButtonPrimaryComponent,
+    BtnConfirmComponent,
     DialogModule,
     ToastModule,
     InputNumberModule,

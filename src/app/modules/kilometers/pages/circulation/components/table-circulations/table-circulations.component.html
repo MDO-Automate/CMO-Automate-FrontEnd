@@ -19,9 +19,9 @@
     <tr>
       <td class="text-center">{{ circulation.circulacion }}</td>
       <td class="text-center">{{ circulation.linea.nombre }}</td>
-      <td class="flex gap-5 justify-center">
-        <app-button-primary (onClick)="onEdit(circulation.circulacion)"  icon="pencil" class="pt-5" textLabel="" />
-        <app-button-primary  icon="trash" class="pt-5" textLabel="" />
+      <td class="flex gap-5 justify-center items-center ">
+        <app-button-primary (onClick)="onEdit(circulation.circulacion)"  icon="pencil" textLabel="" />
+        <app-btn-confirm (accept)="onDelete(circulation.id)" icon="pi-trash" textPopup="¿Está seguro de que desea eliminar este elemento?"  />
       </td>
     </tr>
   </ng-template>
@@ -32,6 +32,8 @@
   title="Editar registro"
   (close)="closeModal()"
   [visible]="modalIsVisible"
+  type="Update"
+  (onSubmit)="emitReload()"
 />
 
 

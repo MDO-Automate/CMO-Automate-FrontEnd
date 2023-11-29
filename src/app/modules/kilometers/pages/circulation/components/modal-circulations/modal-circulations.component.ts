@@ -6,15 +6,24 @@ import { CirculationsService } from '@app/modules/kilometers/services/circulatio
 import { RoutesService } from '@app/modules/kilometers/services/routes.service';
 import { MessageService } from 'primeng/api';
 
+
+
+
+
 @Component({
   selector: 'app-modal-circulations',
   templateUrl: './modal-circulations.component.html',
   styleUrls: ['./modal-circulations.component.css'],
 })
 export class ModalCirculationsComponent implements OnInit, OnChanges {
+  CREATE:'Create' = 'Create'
+  UPDATE:'Update' = 'Update'
+
   @Input() circulation: Circulation | null = null
   @Input() visible: boolean = false
   @Input() title: string = ''
+  @Input() type: 'Update' | 'Create' = this.CREATE
+  @Output() onSubmit: EventEmitter<boolean> = new EventEmitter()
   @Output() close: EventEmitter<boolean> = new EventEmitter()
 
   formCirculation: FormGroup = this.fb.group({
@@ -66,8 +75,7 @@ export class ModalCirculationsComponent implements OnInit, OnChanges {
 
   }
 
-  submit() {
-    if (!this.validatedForm()) return
+  createCirculation() {
     this.circulationsService.create(this.formCirculation.value)
       .subscribe({
         next: (data) => {
@@ -80,7 +88,39 @@ export class ModalCirculationsComponent implements OnInit, OnChanges {
           this.showAlert('error', 'Ha ocurrido un error', error.error.message)
         }
       })
+    }
+
+  updateCirculation(id:number) {
+    this.circulationsService.update(id, this.formCirculation.value)
+      .subscribe({
+        next: (data) => {
+          this.showAlert('success', 'Excelente! :)', 'Se ha actualizado la información exitosamente'),
+          this.visible = false
+        },
+        error: (error) => {
+          console.log(error);
+
+          this.showAlert('error', 'Ha ocurrido un error', error.error.message)
+        }
+      })
+    }
+
+
+  submit() {
+    if (!this.validatedForm()) return
+    this.onSubmit.emit(true)
+    if (this.type === this.CREATE) {
+      this.createCirculation()
+      return
+    }
+    if (this.type === this.UPDATE) {
+      this.updateCirculation(this.circulation?.id || 0)
+      return
+    }
   }
+
+
+
   showAlert(status: string, title: string, message: string) {
     this.messageService.add({ severity: status, summary: title, detail: message });
   }

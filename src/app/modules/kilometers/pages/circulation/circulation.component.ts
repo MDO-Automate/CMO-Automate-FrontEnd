@@ -34,7 +34,10 @@ export class CirculationComponent implements OnInit {
         next: (data) => this.lines = data,
         error: (error) => console.log(error)
       })
+      this.getCirculations()
+  }
 
+  getCirculations(){
     this.circulationsService.getAll()
       .subscribe({
         next: (data) => this.circulations = data,
@@ -42,9 +45,6 @@ export class CirculationComponent implements OnInit {
       })
   }
 
-  saveButton() {
-
-  }
   openModal() {
     this.modalIsVisible = true
   }
