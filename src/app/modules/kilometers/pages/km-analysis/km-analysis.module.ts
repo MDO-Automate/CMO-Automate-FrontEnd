@@ -9,7 +9,6 @@ import { MessageService }     from 'primeng/api'
 import { ProgressBarModule }  from 'primeng/progressbar'
 import { FileUploadModule }   from 'primeng/fileupload';
 
-
 import { KmAnalysisComponent }      from './km-analysis.component'
 import { KmAnalysisRoutingModule }  from './km-analysis-routing.module'
 import { KmTableComponent }         from '../../components/km-table/km-table.component'
@@ -34,7 +33,6 @@ import { BtnConfirmComponent } from '@app/modules/shared/components/btn-confirm/
     ProgressBarModule,
     FileUploadModule,
     MessagesModule,
-
     KmTableComponent,
     GeneralTableComponent,
     KmSumaryTableComponent,

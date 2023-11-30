@@ -3,7 +3,7 @@ import { NgModule } from "@angular/core";
 import { CirculationComponent } from "./circulation.component";
 import { TableCirculationsComponent } from "./components/table-circulations/table-circulations.component";
 import { ButtonPrimaryComponent } from "@app/modules/shared/components/button-primary/button-primary.component";
-import { ModalCirculationsComponent } from "./components/modal-circulations/modal-circulations.component";
+import { CirculationFormComponent } from "./components/circulation-form/circulation-form.component";
 
 import { CirculationRoutingModule } from "./circulation-routing.module";
 import { TableModule } from 'primeng/table';
@@ -16,12 +16,13 @@ import { CommonModule } from "@angular/common";
 
 import { MessageService } from 'primeng/api';
 import { BtnConfirmComponent } from "@app/modules/shared/components/btn-confirm/btn-confirm.component";
+import { CrudContentComponent } from "@app/modules/shared/components/crud/crud-content/crud-content.component";
 
 @NgModule({
   declarations: [
     CirculationComponent,
     TableCirculationsComponent,
-    ModalCirculationsComponent
+    CirculationFormComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +34,8 @@ import { BtnConfirmComponent } from "@app/modules/shared/components/btn-confirm/
     ToastModule,
     InputNumberModule,
     ReactiveFormsModule,
-    DropdownModule
+    DropdownModule,
+    CrudContentComponent
   ],
   providers: [
     MessageService

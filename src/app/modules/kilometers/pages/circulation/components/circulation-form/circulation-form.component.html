@@ -1,19 +1,14 @@
-<p-dialog class="overflow modal-over" [header]="title" (onHide)="onClosedModal()" [(visible)]="visible" [modal]="true"
-  [style]="{ width: '30vw'}" [draggable]="false" [resizable]="false">
-  <hr>
-  <form [formGroup]="formCirculation" class="pt-10 flex flex-col gap-5">
+<form [formGroup]="formCirculation" class="pt-10 flex flex-col gap-5">
     <div class="flex gap-9">
       <span class="p-float-label">
         <p-inputNumber value="" inputId="circulation" inputStyleClass="w-32 h-12 border p-2" inputId="integeronly"
           formControlName="circulacion" autocomplete="off"></p-inputNumber>
         <label htmlFor="circulation">Circulación</label>
-
       </span>
       <span class="p-float-label">
         <p-dropdown inputId="ruta" formControlName="linea" [options]="lines"
           optionLabel="nombre" optionValue="id" styleClass="w-52 border" placeholder="Selecciona la ruta" />
         <label htmlFor="ruta">Ruta</label>
-
       </span>
     </div>
     <app-button-primary
@@ -22,9 +17,5 @@
       [textLabel]="type === CREATE ? 'Guardar' : 'Actualizar'"
       (onClick)="submit()"
     />
-  </form>
-
-
-
-</p-dialog>
+</form>
 <p-toast></p-toast>

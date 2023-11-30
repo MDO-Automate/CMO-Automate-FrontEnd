@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoutesService } from '../../services/routes.service';
 import { Routes } from '@app/core/models/routes';
 import { CirculationsService } from '../../services/circulations.service';
-import { Circulation } from '@app/core/models/circulation';
+import { Circulation, CirculationResponse } from '@app/core/models/circulation';
 
 @Component({
   selector: 'app-circulation',
@@ -11,8 +11,6 @@ import { Circulation } from '@app/core/models/circulation';
   styleUrls: ['./circulation.component.css']
 })
 export class CirculationComponent implements OnInit {
-
-  modalIsVisible = false
 
   formGroup: FormGroup = this.fb.group({
     circulacion: [null, Validators.required],
@@ -29,26 +27,58 @@ export class CirculationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.linesService.getAll()
-      .subscribe({
-        next: (data) => this.lines = data,
-        error: (error) => console.log(error)
-      })
+      this.getLines()
       this.getCirculations()
+  }
+
+  assignCirculation(data: CirculationResponse[]){
+    this.circulations = data.map(({ id, circulacion, linea })=> {
+      const circulacionItem: Circulation = {
+        id,
+        circulacion,
+        linea: linea.nombre
+      }
+      return circulacionItem
+   })
   }
 
   getCirculations(){
     this.circulationsService.getAll()
       .subscribe({
-        next: (data) => this.circulations = data,
+        next: (data) => this.assignCirculation(data),
         error: (error) => console.log(error)
       })
   }
 
-  openModal() {
-    this.modalIsVisible = true
+  getLines(){
+    this.linesService.getAll()
+    .subscribe({
+      next: (data) => this.lines = data,
+      error: (error) => console.log(error)
+    })
   }
-  closeModal() {
-    this.modalIsVisible = false
+  
+  /*
+  onEdit(circulation: number) {
+    this.circulationsService.getByName(circulation)
+      .subscribe({
+        next: (data) => this.circulation = data[0],
+        error: (error) => console.log(error)
+      })
   }
+  */
+  /*
+  onDelete(id: number){
+    this.circulationsService.delete(id)
+    .subscribe({
+      next: () => {
+        this.showAlert('success', 'Excelente! :)', 'Se ha eliminado la información exitosamente')
+      },
+      error: (error) => {
+        this.showAlert('error', 'Ha ocurrido un error', error.error.message)
+      }
+    })
+  }
+  */
+
 }

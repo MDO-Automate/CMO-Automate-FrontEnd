@@ -1,0 +1,11 @@
+<p-dialog
+  header="Titulo de prueba"
+  [(visible)]="visible"
+  (onHide)="emitOnClose()"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+>
+    <hr>
+    <ng-content></ng-content>
+</p-dialog>

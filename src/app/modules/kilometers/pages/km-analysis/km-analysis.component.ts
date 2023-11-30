@@ -36,7 +36,7 @@ export class KmAnalysisComponent {
 
   private processResponse(name: string){
     return {
-      next: ()=> { this.requestWithoutError()},
+      next: ()=> { this.requestWithoutError() },
       error: () => {
         this.showErrorMessage(name)
       }

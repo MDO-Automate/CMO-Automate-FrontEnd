@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Circulation } from '@app/core/models/circulation';
+import { Circulation, CirculationResponse } from '@app/core/models/circulation';
 import { environments } from '@env/environment';
 import { catchError, throwError } from 'rxjs';
 
@@ -16,21 +16,21 @@ export class CirculationsService {
   ) { }
 
   getByName(circulation: number) {
-    return this.http.get<Circulation[]>(`${this.baseUri}/circulacion/${circulation}`)
+    return this.http.get<CirculationResponse[]>(`${this.baseUri}/circulacion/${circulation}`)
   }
 
   getAll() {
-    return this.http.get<Circulation[]>(`${this.baseUri}/circulacion/`)
+    return this.http.get<CirculationResponse[]>(`${this.baseUri}/circulacion/`)
       .pipe(catchError(err => throwError(() => err)))
   }
 
   create(circulation: Circulation) {
-    return this.http.post<Circulation>(`${this.baseUri}/circulacion/`, circulation)
+    return this.http.post<CirculationResponse>(`${this.baseUri}/circulacion/`, circulation)
       .pipe(catchError(err => throwError(() => err)))
   }
 
   update(id: number, circulation: Circulation) {
-    return this.http.patch<Circulation>(`${this.baseUri}/circulacion/${id}`, circulation)
+    return this.http.patch<CirculationResponse>(`${this.baseUri}/circulacion/${id}`, circulation)
       .pipe(catchError(err => throwError(() => err)))
   }
 

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Circulation } from '@app/core/models/circulation';
+import { Circulation, CirculationResponse } from '@app/core/models/circulation';
 import { CirculationsService } from '@app/modules/kilometers/services/circulations.service';
 import { MessageService } from 'primeng/api';
 
@@ -19,7 +19,7 @@ export class TableCirculationsComponent {
   @Output() onReload: EventEmitter<boolean> = new EventEmitter()
 
   modalIsVisible = false
-  circulation: Circulation | null = null
+  circulation: CirculationResponse | null = null
 
   openModal() {
     this.modalIsVisible = true

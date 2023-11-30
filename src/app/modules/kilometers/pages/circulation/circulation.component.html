@@ -1,5 +1,10 @@
 <h1 class="">Circulaciones</h1>
-<app-button-primary (onClick)="openModal()" icon="plus" class="pt-5" textLabel="Agregar" />
-<app-modal-circulations (onSubmit)="getCirculations()" type="Create" title="Agregar registro" (close)="closeModal()" [visible]="modalIsVisible" />
-<app-table-circulations (onReload)="getCirculations()" class="w-1/2" [data]="circulations" />
-<app-modal-circulations />
+
+<app-crud-content
+    class="w-1/2"
+    [headers]="['Circulación', 'Línea']"
+    [data]="circulations"
+>
+    <app-circulation-form />
+</app-crud-content>
+

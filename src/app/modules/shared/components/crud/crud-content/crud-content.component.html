@@ -1,0 +1,11 @@
+<section>
+    <app-button-primary (onClick)="openModal()" icon="plus" class="pt-5" textLabel="Agregar" />
+    <app-crud-table
+        [headers]="headers"
+        [data]="data"
+        (onEdit)="openModal()"
+    />
+    <app-crud-modal (onClose)="closeModal()" [visible]="modalVisible" >
+        <ng-content></ng-content>
+    </app-crud-modal>
+</section>

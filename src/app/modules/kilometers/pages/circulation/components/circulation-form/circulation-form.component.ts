@@ -1,26 +1,21 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Circulation } from '@app/core/models/circulation';
+import { Circulation, CirculationResponse } from '@app/core/models/circulation';
 import { Routes } from '@app/core/models/routes';
 import { CirculationsService } from '@app/modules/kilometers/services/circulations.service';
 import { RoutesService } from '@app/modules/kilometers/services/routes.service';
 import { MessageService } from 'primeng/api';
 
-
-
-
-
 @Component({
-  selector: 'app-modal-circulations',
-  templateUrl: './modal-circulations.component.html',
-  styleUrls: ['./modal-circulations.component.css'],
+  selector: 'app-circulation-form',
+  templateUrl: './circulation-form.component.html',
+  styleUrls: ['./circulation-form.component.css'],
 })
-export class ModalCirculationsComponent implements OnInit, OnChanges {
+export class CirculationFormComponent implements OnInit, OnChanges {
   CREATE:'Create' = 'Create'
   UPDATE:'Update' = 'Update'
 
-  @Input() circulation: Circulation | null = null
-  @Input() visible: boolean = false
+  @Input() circulation: CirculationResponse | null = null
   @Input() title: string = ''
   @Input() type: 'Update' | 'Create' = this.CREATE
   @Output() onSubmit: EventEmitter<boolean> = new EventEmitter()
@@ -41,13 +36,7 @@ export class ModalCirculationsComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
-    this.linesService.getAll()
-      .subscribe({
-        next: (data) => this.lines = data,
-        error: (error) => console.log(error)
-      })
-      console.log(this.circulation);
-
+    this.getLines()
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -59,8 +48,12 @@ export class ModalCirculationsComponent implements OnInit, OnChanges {
 
   }
 
-  onClosedModal() {
-    this.close.emit(true)
+  getLines(){
+    this.linesService.getAll()
+    .subscribe({
+      next: (data) => this.lines = data,
+      error: (error) => console.log(error)
+    })
   }
 
   validatedForm() {
@@ -78,9 +71,12 @@ export class ModalCirculationsComponent implements OnInit, OnChanges {
   createCirculation() {
     this.circulationsService.create(this.formCirculation.value)
       .subscribe({
-        next: (data) => {
-          this.showAlert('success', 'Excelente! :)', 'Se ha guardado la información exitosamente'),
-          this.visible = false
+        next: () => {
+          this.showAlert(
+            'success', 
+            'Excelente! :)', 
+            'Se ha guardado la información exitosamente'
+          )
         },
         error: (error) => {
           console.log(error);
@@ -94,8 +90,7 @@ export class ModalCirculationsComponent implements OnInit, OnChanges {
     this.circulationsService.update(id, this.formCirculation.value)
       .subscribe({
         next: (data) => {
-          this.showAlert('success', 'Excelente! :)', 'Se ha actualizado la información exitosamente'),
-          this.visible = false
+          this.showAlert('success', 'Excelente! :)', 'Se ha actualizado la información exitosamente')
         },
         error: (error) => {
           console.log(error);
@@ -104,7 +99,6 @@ export class ModalCirculationsComponent implements OnInit, OnChanges {
         }
       })
     }
-
 
   submit() {
     if (!this.validatedForm()) return
@@ -118,8 +112,6 @@ export class ModalCirculationsComponent implements OnInit, OnChanges {
       return
     }
   }
-
-
 
   showAlert(status: string, title: string, message: string) {
     this.messageService.add({ severity: status, summary: title, detail: message });

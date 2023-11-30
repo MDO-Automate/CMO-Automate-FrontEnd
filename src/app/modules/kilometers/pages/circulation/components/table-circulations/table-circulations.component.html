@@ -27,13 +27,12 @@
   </ng-template>
 
 </p-table>
-<app-modal-circulations
-[circulation]="circulation"
-  title="Editar registro"
-  (close)="closeModal()"
-  [visible]="modalIsVisible"
+<app-circulation-form
+  title="Editar registro" 
   type="Update"
+  [circulation]="circulation"
   (onSubmit)="emitReload()"
+  (close)="closeModal()"
 />
 
 
