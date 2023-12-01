@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { CrudTableComponent } from '../table-crud/crud-table.component';
 import { CrudModalComponent } from '../crud-modal/crud-modal.component';
 import { ButtonPrimaryComponent } from '../../button-primary/button-primary.component';
@@ -18,14 +19,40 @@ import { ButtonPrimaryComponent } from '../../button-primary/button-primary.comp
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CrudContentComponent { 
+  CREATE: 'Create' = 'Create'
+  UPDATE: 'Update' = 'Update'
+
+  type: 'Update' | 'Create' = this.CREATE
+
   @Input() data : any[] = []
   @Input() headers: string[] = []
   @Input() modalVisible: boolean = false
 
+  @Output() onItemEdit = new EventEmitter<any>()
+  @Output() onItemDelete = new EventEmitter<any>()
+  @Output() onCreateButton = new EventEmitter()
+ 
   openModal() {
     this.modalVisible = true
   }
   closeModal() {
     this.modalVisible = false
   }
+
+  onCreate(){
+    this.type = 'Create'
+    this.openModal()
+    this.onCreateButton.emit()
+  }
+
+  onEdit(item: any){
+    this.type = 'Update'
+    this.openModal()
+    this.onItemEdit.emit(item)
+  }
+
+  onDelete(item: any){
+    this.onItemDelete.emit(item)
+  } 
+
 }

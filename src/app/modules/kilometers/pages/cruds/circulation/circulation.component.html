@@ -1,0 +1,20 @@
+<h1 class="font-bold py-5 text-xl">Circulaciones</h1>
+<app-crud-content
+    class="w-1/2"
+    [headers]="['Circulación', 'Línea']"
+    [data]="circulationsTable"
+    (onItemEdit)="onItemEdit($event)"
+    (onItemDelete)="deleteCirculation($event)"
+    (onCreateButton)="onButtonCreate()"  
+    [modalVisible]="modalVisible"
+>
+    <app-circulation-form 
+        [type]="typeForm"
+        [circulation]="circulation"  
+        [lines]="lines" 
+        (onCreate)="createCirculation($event)"
+        (onEdit)="updateCirculation($event)"
+    />
+</app-crud-content>
+<p-toast></p-toast>
+

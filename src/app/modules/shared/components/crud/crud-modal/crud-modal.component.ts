@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
+
 import { DialogModule } from 'primeng/dialog';
 
 @Component({
@@ -16,11 +17,11 @@ import { DialogModule } from 'primeng/dialog';
 })
 export class CrudModalComponent { 
   @Input() visible: boolean = false
+  @Input() typeModal: 'Create' | 'Update' = 'Create'
   @Output() onClose: EventEmitter<boolean> = new EventEmitter() 
 
   emitOnClose(){
     this.onClose.emit(true)
   }
-  
 
 }

@@ -1,5 +1,5 @@
 <p-dialog
-  header="Titulo de prueba"
+  [header]="typeModal === 'Create' ? 'Agregar registro': 'Editar registo'"
   [(visible)]="visible"
   (onHide)="emitOnClose()"
   [modal]="true"

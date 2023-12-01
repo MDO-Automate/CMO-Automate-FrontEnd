@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'circulacion',
-    loadChildren: () => import('./pages/circulation/circulation.module').then(m => m.CiculationModule)
+    loadChildren: () => import('./pages/cruds/circulation/circulation.module').then(m => m.CiculationModule)
   }
 ];
 

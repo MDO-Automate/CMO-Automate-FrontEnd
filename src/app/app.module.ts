@@ -8,6 +8,7 @@ import { RatingModule } from 'primeng/rating';
 import { SliderModule } from 'primeng/slider';
 import { HeaderComponent } from './modules/shared/components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -20,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     SliderModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ MessageService ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
