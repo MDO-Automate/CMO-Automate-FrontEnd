@@ -25,6 +25,7 @@ export class CirculationFormComponent implements OnChanges {
   @Input() circulation: CirculationResponse | null = null
   @Input() type: CrudString = this.CREATE
   @Input() lines: Routes[] = []
+  @Input() reset: boolean = false
 
   @Output() onCreate = new EventEmitter<Circulation>()
   @Output() onEdit = new EventEmitter<Circulation>()
@@ -35,6 +36,7 @@ export class CirculationFormComponent implements OnChanges {
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if(changes['reset']?.currentValue) this.formCirculation.reset() 
     if (changes['circulation']) {
       this.formCirculation.get('circulacion')?.setValue(this.circulation?.circulacion)
       this.formCirculation.get('linea')?.setValue(this.circulation?.linea.id)
