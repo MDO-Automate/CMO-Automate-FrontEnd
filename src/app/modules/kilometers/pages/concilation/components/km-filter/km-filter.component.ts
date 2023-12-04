@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {PrimeNGConfig} from 'primeng/api';
 
 
-import { Criteria } from '@app/core/models/criteria';
+import { Criteria } from '@app/core/models/criterio';
 import { Itinerary } from '@app/core/models/itinerary';
 import { KmFilter } from '@app/core/models/kilometers';
 import { Routes } from '@app/core/models/routes';
-import { CriteriesService } from '@app/modules/kilometers/services/criteries.service';
+import { CriteriesService } from '@app/modules/kilometers/services/criteria.service';
 import { ItinerariesService } from '@app/modules/kilometers/services/itineraries.service';
 import { RoutesService } from '@app/modules/kilometers/services/routes.service';
 
@@ -33,7 +33,7 @@ export class KmFilterComponent implements OnInit {
     kmFinal : [null]
   })
   @Output() onDataFilter: EventEmitter<KmFilter> = new EventEmitter()
-  
+
   constructor(
     private fb: FormBuilder,
     private routesService: RoutesService,
@@ -44,13 +44,13 @@ export class KmFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.routesService.getAll().subscribe({
-      next: (data)=> this.lines = data 
+      next: (data)=> this.lines = data
     })
     this.itinerariesService.getAll().subscribe({
-      next: (data)=> this.itineraries = data 
+      next: (data)=> this.itineraries = data
     })
     this.criteriesService.getAll().subscribe({
-      next: (data)=> this.criteries = data 
+      next: (data)=> this.criteries = data
     })
 
     this.primeNGConfig.setTranslation(
@@ -65,10 +65,10 @@ export class KmFilterComponent implements OnInit {
         clear: 'Limpiar',
       }
     );
-    
+
   }
 
-  clear(){      
+  clear(){
     this.filterForm.reset()
   }
 

@@ -1,1 +1,19 @@
-<p>criteria works!</p>,
+<h1 class='font-bold py-5 text-xl'>Criterios</h1>
+<app-crud-content
+  class="w-1/2"
+  [headers]="['Nombre', 'Campo']"
+  [data]="criteriaTable"
+  (onItemEdit)="onItemEdit($event)"
+  (onItemDelete)="deleteCriterio($event)"
+  (onCreateButton)="onButtonCreate()"
+  [modalVisible]="modalVisible"
+>
+<app-criteria-form
+  [type]="typeForm"
+  [reset]="resetForm"
+  [criterio]="criterio"
+  (onCreate)="createCirculation($event)"
+  (onUpdate)="updateCirculation($event)"
+
+  />
+</app-crud-content>

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Criteria } from "@app/core/models/criteria";
+import { Criterio } from "@app/core/models/criterio";
 
 import { environments } from '@env/environment'
 import { catchError, throwError } from "rxjs";
@@ -8,14 +8,14 @@ import { catchError, throwError } from "rxjs";
 @Injectable({
     providedIn: 'root'
 })
-export class CriteriesService {
+export class CriteriaService {
 
-    baseUri = environments.baseUrl
+    private baseUri = environments.baseUrl
 
     constructor(private http: HttpClient){}
 
     getAll(){
-        return this.http.get<Criteria[]>(`${this.baseUri}/criterios`)
+        return this.http.get<Criterio[]>(`${this.baseUri}/criterios`)
             .pipe(catchError(err =>  throwError(()=> err)))
     }
 
