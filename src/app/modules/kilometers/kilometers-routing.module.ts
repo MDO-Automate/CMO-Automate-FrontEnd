@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'circulacion',
     loadChildren: () => import('./pages/cruds/circulation/circulation.module').then(m => m.CiculationModule)
+  },
+  {
+    path: 'criterio',
+    loadChildren: () => import('./pages/cruds/criteria/criteria.module').then(m => m.CriteriaModule)
   }
 ];
 
