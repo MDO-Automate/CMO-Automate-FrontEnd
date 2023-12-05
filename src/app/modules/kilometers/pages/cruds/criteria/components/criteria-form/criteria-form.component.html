@@ -1,1 +1,21 @@
-<p>criteria-form works!</p>,
+<form [formGroup]="formCriterio" class="pt-10 flex flex-col gap-5">
+  <div class="flex gap-9">
+    <span class="p-float-label">
+      <input type="text" pInputText value="" inputId="name" class="w-32 h-12 border p-2"
+      formControlName="nombre" autocomplete="off"/>
+      <label htmlFor="name">Nombre</label>
+    </span>
+    <span class="p-float-label">
+      <input type="text" pInputText value="" inputId="field" class="w-32 h-12 border p-2"
+      formControlName="campo" autocomplete="off">
+      <label htmlFor="field">Campo</label>
+    </span>
+  </div>
+  <app-button-primary
+    icon="save"
+    class="pt-5"
+    [textLabel]="type === CREATE ? 'Guardar' : 'Actualizar'"
+    (onClick)="submit()"
+  />
+</form>
+

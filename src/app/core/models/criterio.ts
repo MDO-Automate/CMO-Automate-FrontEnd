@@ -1,5 +1,5 @@
 export interface Criterio {
-    id: number
+    id?: number
     nombre: string
-    campo:string
+    campo: string
 }

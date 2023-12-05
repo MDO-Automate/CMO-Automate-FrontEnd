@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {PrimeNGConfig} from 'primeng/api';
 
 
-import { Criteria } from '@app/core/models/criterio';
+import { Criterio } from '@app/core/models/criterio';
 import { Itinerary } from '@app/core/models/itinerary';
 import { KmFilter } from '@app/core/models/kilometers';
 import { Routes } from '@app/core/models/routes';
-import { CriteriesService } from '@app/modules/kilometers/services/criteria.service';
+import { CriteriaService } from '@app/modules/kilometers/services/criteria.service';
 import { ItinerariesService } from '@app/modules/kilometers/services/itineraries.service';
 import { RoutesService } from '@app/modules/kilometers/services/routes.service';
 
@@ -21,7 +21,7 @@ export class KmFilterComponent implements OnInit {
 
   lines: Routes[] | null = null
   itineraries : Itinerary[] | null = null
-  criteries: Criteria[] | null = null
+  criteries: Criterio[] | null = null
 
 
   filterForm : FormGroup = this.fb.group({
@@ -38,7 +38,7 @@ export class KmFilterComponent implements OnInit {
     private fb: FormBuilder,
     private routesService: RoutesService,
     private itinerariesService: ItinerariesService,
-    private criteriesService: CriteriesService,
+    private criteriesService: CriteriaService,
     private primeNGConfig: PrimeNGConfig
   ){}
 

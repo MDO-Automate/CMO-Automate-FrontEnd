@@ -18,7 +18,7 @@ import { ButtonPrimaryComponent } from '../../button-primary/button-primary.comp
   styleUrls: ['./crud-content.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CrudContentComponent { 
+export class CrudContentComponent {
   CREATE: 'Create' = 'Create'
   UPDATE: 'Update' = 'Update'
 
@@ -27,11 +27,12 @@ export class CrudContentComponent {
   @Input() data : any[] = []
   @Input() headers: string[] = []
   @Input() modalVisible: boolean = false
+  @Input() resetForm: boolean = false
 
   @Output() onItemEdit = new EventEmitter<any>()
   @Output() onItemDelete = new EventEmitter<any>()
   @Output() onCreateButton = new EventEmitter()
- 
+
   openModal() {
     this.modalVisible = true
   }
@@ -53,6 +54,6 @@ export class CrudContentComponent {
 
   onDelete(item: any){
     this.onItemDelete.emit(item)
-  } 
+  }
 
 }
