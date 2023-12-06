@@ -32,8 +32,6 @@ export class CriteriaFormComponent implements OnChanges {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes['reset']?.currentValue);
-
     if (changes['reset']?.currentValue) this.formCriterio.reset()
     if (changes['criterio']) {
       this.formCriterio.get('nombre')?.setValue(this.criterio?.nombre)
