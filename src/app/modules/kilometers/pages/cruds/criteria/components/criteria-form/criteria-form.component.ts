@@ -73,7 +73,4 @@ export class CriteriaFormComponent implements OnChanges {
       return
     }
   }
-
-
-
 }

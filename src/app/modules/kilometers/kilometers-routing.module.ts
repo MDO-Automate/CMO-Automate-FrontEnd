@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'festivo',
     loadChildren: () => import('./pages/cruds/holiday/holiday.module').then(m => m.HolidayModule)
+  },
+  {
+    path: 'itinerario',
+    loadChildren: () => import('./pages/cruds/itinerary/itinerary.module').then(m => m.ItineraryModule)
   }
 ];
 

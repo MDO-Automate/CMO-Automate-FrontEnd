@@ -31,7 +31,6 @@ export class CriteriaComponent implements OnInit {
         next: (data) => {this.criteriaTable = data},
         error: (error) => console.log(error)
       })
-
   }
 
   onButtonCreate() {
