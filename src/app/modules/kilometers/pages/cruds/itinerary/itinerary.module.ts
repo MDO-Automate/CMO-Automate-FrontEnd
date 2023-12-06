@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ItineraryRoutingModule } from './itinerary-routing.module';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ItineraryRoutingModule } from './itinerary-routing.module';
     CrudContentComponent,
     DialogModule,
     InputTextModule,
+    InputNumberModule,
     ReactiveFormsModule,
     SharedModule,
     TableModule,

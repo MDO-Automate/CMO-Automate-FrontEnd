@@ -1,9 +1,9 @@
 <form [formGroup]="formItinerary" class="pt-10 flex flex-col gap-5">
   <div class="flex gap-9">
     <span class="p-float-label">
-      <input type="text" pInputText value="" inputId="name" class="w-32 h-12 border p-2"
-      formControlName="nombre" autocomplete="off"/>
-      <label htmlFor="name">Nombre</label>
+      <p-inputNumber value="" inputId="nombre" inputStyleClass="w-32 h-12 border p-2"
+          formControlName="nombre" autocomplete="off"></p-inputNumber>
+        <label htmlFor="nombre">Nombre</label>
     </span>
   </div>
   <app-button-primary
