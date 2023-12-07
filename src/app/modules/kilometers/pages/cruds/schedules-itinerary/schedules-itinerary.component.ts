@@ -62,7 +62,7 @@ export class SchedulesItineraryComponent implements OnInit{
 
   onButtonCreate() {
     this.typeForm = 'Create';
-    this.resetForm = true
+    this.resetForm = false
     this.modalVisible = true;
     this.schedulesItinerary = null;
   }

@@ -50,7 +50,7 @@ export class CirculationComponent implements OnInit {
 
   onButtonCreate() {
     this.typeForm = 'Create';
-    this.resetForm = true
+    this.resetForm = false
     this.modalVisible = true;
     this.circulation = null;
   }
