@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'itinerario',
     loadChildren: () => import('./pages/cruds/itinerary/itinerary.module').then(m => m.ItineraryModule)
+  },
+  {
+    path: 'horarios-itinerario',
+    loadChildren: () => import('./pages/cruds/schedules-itinerary/schedules-itinerary.module').then(m => m.SchedulesItineraryModule)
   }
 ];
 

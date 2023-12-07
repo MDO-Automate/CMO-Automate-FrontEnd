@@ -1,0 +1,68 @@
+<form [formGroup]="formSchedulesItinerary" class="pt-10 flex flex-col gap-5">
+  <div class="grid grid-cols-2 gap-9">
+
+    <span class="p-float-label">
+      <p-dropdown inputId="ruta" formControlName="linea" [options]="lines" optionLabel="nombre" optionValue="id"
+        styleClass="w-52 border" placeholder="Selecciona la ruta" />
+      <label htmlFor="ruta">Ruta</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-dropdown inputId="itinerary" formControlName="itinerario" [options]="itineraries" optionLabel="nombre"
+        optionValue="id" styleClass="w-52 border" placeholder="Selecciona el itinerario" />
+      <label htmlFor="itinerary">Itinerario</label>
+    </span>
+
+
+    <span class="p-float-label col-span-2">
+      <p-dropdown inputId="way" formControlName="sentido" [options]="optionsWay" styleClass="w-52 border"
+        placeholder="Selecciona el sentido" />
+      <label htmlFor="way">Sentido</label>
+    </span>
+
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="lvInicio" value="" inputId="lvStart" autocomplete="off"/>
+      <label htmlFor="lvStart">Inicio - Lun a Vie.</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="lvFin" value="" inputId="lvEnd" autocomplete="off"/>
+      <label htmlFor="lvEnd">Fin - Lun a Vie.</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="sInicio" value="" inputId="sStart" autocomplete="off"/>
+      <label htmlFor="sStart">Inicio - Sábados</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="sFin" value="" inputId="sEnd" autocomplete="off"/>
+      <label htmlFor="sEnd">Fin - Sábados</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="dInicio" value="" inputId="dStart" autocomplete="off"/>
+      <label htmlFor="dStart">Inicio - Domingos</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="dFin" value="" inputId="dEnd" autocomplete="off"/>
+      <label htmlFor="dEnd">Fin - Domingos</label>
+    </span>
+
+  </div>
+
+  <app-button-primary icon="save" class="pt-5" [textLabel]="type === CREATE ? 'Guardar' : 'Actualizar'"
+    (onClick)="submit()" />
+
+</form>
+
+<!--
+  <div
+        *ngIf="filterForm.get('fecha')?.touched && filterForm.get('fecha')?.errors"
+        class="absolute top-14 alert bg-warning text-sm"
+      >
+        <span>La fecha es requerida.</span>
+      </div>
+-->
