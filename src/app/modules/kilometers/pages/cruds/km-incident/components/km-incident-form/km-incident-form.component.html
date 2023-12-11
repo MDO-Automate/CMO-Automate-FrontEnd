@@ -1,0 +1,15 @@
+<form [formGroup]="formKmIncident" class="pt-10 flex flex-col gap-5">
+  <div class="flex gap-9">
+    <span class="p-float-label">
+      <input type="text" pInputText value="" inputId="name" class="w-56 h-12 border p-2"
+      formControlName="nombre" autocomplete="off"/>
+      <label htmlFor="name">Nombre</label>
+    </span>
+  </div>
+  <app-button-primary
+    icon="save"
+    class="pt-5"
+    [textLabel]="type === CREATE ? 'Guardar' : 'Actualizar'"
+    (onClick)="submit()"
+  />
+</form>

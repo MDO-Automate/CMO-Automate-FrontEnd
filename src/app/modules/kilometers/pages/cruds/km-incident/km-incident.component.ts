@@ -1,35 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { HolidaysService } from '@app/modules/kilometers/services/holidays.service';
-import { MessageService } from 'primeng/api';
-import { Holiday } from '@app/core/models/holiday';
+import { KmIncident } from '@app/core/models/km-incident';
 import { CrudAlertString, CrudString } from '@app/core/types/crud';
+import { KmIncidentsService } from '@app/modules/kilometers/services/km-incidents.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-holidays',
-  templateUrl: './holiday.component.html',
-  styleUrls: ['./holiday.component.css'],
+  selector: 'app-km-incident',
+  templateUrl: './km-incident.component.html',
+  styleUrls: ['./km-incident.component.css'],
 })
-export class HolidayComponent implements OnInit {
-
+export class KmIncidentComponent implements OnInit{
   modalVisible = false
-  holidaysTable: Holiday[] = []
-  holiday: Holiday | null = null
+  kmIncidentsTable: KmIncident[] = []
+  kmIncident: KmIncident | null = null
   typeForm: CrudString = 'Create'
   resetForm = false
 
   constructor(
     private messageService: MessageService,
-    private holidaysService: HolidaysService
+    private kmIncidentsService: KmIncidentsService
   ) {}
 
   ngOnInit(): void {
-    this.getHolidays()
+    this.getKmIncidents()
   }
 
-  getHolidays() {
-    this.holidaysService.getAll()
+  getKmIncidents() {
+    this.kmIncidentsService.findAll()
       .subscribe({
-        next: (data) => {this.holidaysTable = data},
+        next: (data) => this.kmIncidentsTable = data,
         error: (error) => console.log(error)
       })
   }
@@ -38,32 +37,32 @@ export class HolidayComponent implements OnInit {
     this.typeForm = 'Create'
     this.resetForm = false
     this.modalVisible = true
-    this.holiday = null
+    this.kmIncident = null
   }
 
-  onItemEdit(item: Holiday) {
+  onItemEdit(item: KmIncident) {
     this.typeForm = 'Update'
     this.modalVisible = true
-    this.holiday = this.holidaysTable.find((i) => i.fecha === item.fecha) || null
+    this.kmIncident = this.kmIncidentsTable.find((i) => i.id === item.id) || null
   }
 
-  createHoliday(holiday: Holiday) {
-    this.holidaysService
-      .create(holiday)
+  createKmIncident(kmIncident: KmIncident) {
+    this.kmIncidentsService
+      .create(kmIncident)
       .subscribe(this.handlerResponseCrud('guardado'))
   }
 
-  updateHoliday(holiday: Holiday) {
-    const { fecha } = holiday
-    delete holiday.fecha
-    this.holidaysService
-      .update(fecha || '' , holiday)
+  updateKmIncident(kmIncident: KmIncident) {
+    const { id } = kmIncident
+    delete kmIncident.id
+    this.kmIncidentsService
+      .update(id || 0 , kmIncident)
       .subscribe(this.handlerResponseCrud('actualizado'))
   }
 
-  deleteHoliday(holiday: Holiday) {
-    this.holidaysService
-      .delete(holiday?.fecha || '')
+  deleteKmIncident(kmIncident: KmIncident) {
+    this.kmIncidentsService
+      .delete(kmIncident?.id || 0)
       .subscribe(this.handlerResponseCrud('eliminado'))
   }
 
@@ -79,7 +78,7 @@ export class HolidayComponent implements OnInit {
     return {
       next: () => {
         this.showAlert('success','Excelente! :)',`Se ha ${type} la información exitosamente`)
-        this.getHolidays()
+        this.getKmIncidents()
         this.resetForm = true
         this.modalVisible = false
       },

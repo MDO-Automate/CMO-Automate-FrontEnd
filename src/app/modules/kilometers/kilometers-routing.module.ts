@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'horarios-itinerario',
     loadChildren: () => import('./pages/cruds/schedules-itinerary/schedules-itinerary.module').then(m => m.SchedulesItineraryModule)
+  },
+  {
+    path: 'km-incidencia',
+    loadChildren: () => import('./pages/cruds/km-incident/km-incident.module').then(m => m.KmIncidentModule)
   }
 ];
 

@@ -8,7 +8,7 @@ import { DateTimePipe } from '../../pipes/date-time.pipe';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
-import { KmIncidenciaService } from '../../services/km-incidencias.service';
+import { KmIncidentsService } from '../../services/km-incidents.service';
 import { DatePipe } from '../../pipes/date.pipe';
 
 @Component({
@@ -35,7 +35,7 @@ export class KmTableComponent implements OnInit {
 
   incidences: any[] = []
 
-  constructor(private kmIncidenciaService: KmIncidenciaService) { }
+  constructor(private kmIncidentService: KmIncidentsService) { }
 
   ngOnInit(): void {
     this.getIncidences()
@@ -43,7 +43,7 @@ export class KmTableComponent implements OnInit {
   }
 
   getIncidences() {
-    this.kmIncidenciaService.findAll().subscribe((data) => {
+    this.kmIncidentService.findAll().subscribe((data) => {
       this.incidences = data
     })
   }

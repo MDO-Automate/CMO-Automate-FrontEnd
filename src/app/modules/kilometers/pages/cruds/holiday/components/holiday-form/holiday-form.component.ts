@@ -54,8 +54,6 @@ export class HolidayFormComponent implements OnChanges{
   }
 
   submit() {
-    console.log(this.formHoliday.value);
-
     if (!this.validatedForm()) {
       this.reset = false
       return
