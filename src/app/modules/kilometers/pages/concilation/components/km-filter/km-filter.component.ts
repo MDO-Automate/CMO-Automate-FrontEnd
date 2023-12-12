@@ -6,7 +6,7 @@ import {PrimeNGConfig} from 'primeng/api';
 import { Criterio } from '@app/core/models/criterio';
 import { Itinerary } from '@app/core/models/itinerary';
 import { KmFilter } from '@app/core/models/kilometers';
-import { Routes } from '@app/core/models/routes';
+import { Route, RouteResponse } from '@app/core/models/routes';
 import { CriteriaService } from '@app/modules/kilometers/services/criteria.service';
 import { ItinerariesService } from '@app/modules/kilometers/services/itineraries.service';
 import { RoutesService } from '@app/modules/kilometers/services/routes.service';
@@ -19,7 +19,7 @@ import { RoutesService } from '@app/modules/kilometers/services/routes.service';
 })
 export class KmFilterComponent implements OnInit {
 
-  lines: Routes[] | null = null
+  lines: RouteResponse[] | null = null
   itineraries : Itinerary[] | null = null
   criteries: Criterio[] | null = null
 

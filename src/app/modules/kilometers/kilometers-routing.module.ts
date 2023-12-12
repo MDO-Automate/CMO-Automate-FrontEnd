@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'km-incidencia',
     loadChildren: () => import('./pages/cruds/km-incident/km-incident.module').then(m => m.KmIncidentModule)
+  },
+  {
+    path: 'ruta',
+    loadChildren: () => import('./pages/cruds/route/route.module').then(m => m.RouteModule)
   }
 ];
 

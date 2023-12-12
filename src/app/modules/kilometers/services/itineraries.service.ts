@@ -15,7 +15,7 @@ export class ItinerariesService {
     constructor(private http: HttpClient){}
 
     getByName(itinerary: string){
-      return this.http.get<Itinerary[]>(`${this.baseUri}/itinerarios`)
+      return this.http.get<Itinerary[]>(`${this.baseUri}/itinerarios/${itinerary}`)
     }
 
     getAll(){

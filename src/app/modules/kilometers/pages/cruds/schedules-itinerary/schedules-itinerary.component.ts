@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Itinerary } from '@app/core/models/itinerary';
-import { Routes } from '@app/core/models/routes';
+import { RouteResponse } from '@app/core/models/routes';
 import { CrudAlertString, CrudString } from '@app/core/types/crud';
 
 import { SchedulesItineraryResponse } from '@app/core/models/schedulesItinerary';
@@ -16,8 +16,8 @@ import { MessageService } from 'primeng/api';
   templateUrl: './schedules-itinerary.component.html',
   styleUrls: ['./schedules-itinerary.component.css']
 })
-export class SchedulesItineraryComponent implements OnInit{
-  lines: Routes[] = []
+export class SchedulesItineraryComponent implements OnInit {
+  lines: RouteResponse[] = []
   itineraries: Itinerary[] = []
   modalVisible = false
   schedulesItineraries: SchedulesItineraryResponse[] = []

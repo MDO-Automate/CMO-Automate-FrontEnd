@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Itinerary } from '@app/core/models/itinerary';
-import { Routes } from '@app/core/models/routes';
+import { Route, RouteResponse } from '@app/core/models/routes';
 import { SchedulesItinerary, SchedulesItineraryResponse } from '@app/core/models/schedulesItinerary';
 import { CrudString } from '@app/core/types/crud';
 
@@ -33,7 +33,7 @@ export class SchedulesItineraryFormComponent implements OnChanges {
 
   @Input() schedulesItinerary: SchedulesItineraryResponse | null = null
   @Input() type: CrudString = this.CREATE
-  @Input() lines: Routes[] = []
+  @Input() lines: RouteResponse[] = []
   @Input() itineraries: Itinerary[] = []
   @Input() reset: boolean = false
 

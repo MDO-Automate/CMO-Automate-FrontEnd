@@ -1,5 +1,5 @@
 import { Itinerary } from "./itinerary"
-import { Routes } from "./routes"
+import { Route } from "./routes"
 
 export interface SchedulesItinerary {
   id?: number
@@ -16,7 +16,7 @@ export interface SchedulesItinerary {
 
 export interface SchedulesItineraryResponse {
   id?: number
-  linea: Routes
+  linea: Route
   itinerario: Itinerary
   sentido: string
   lvInicio: string

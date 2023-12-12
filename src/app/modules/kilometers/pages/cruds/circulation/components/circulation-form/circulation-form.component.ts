@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Routes } from '@app/core/models/routes';
+import { Route, RouteResponse } from '@app/core/models/routes';
 
 import { Circulation, CirculationResponse } from '@app/core/models/circulation';
 import { CrudString } from '@app/core/types/crud';
@@ -24,7 +24,7 @@ export class CirculationFormComponent implements OnChanges {
 
   @Input() circulation: CirculationResponse | null = null
   @Input() type: CrudString = this.CREATE
-  @Input() lines: Routes[] = []
+  @Input() lines: RouteResponse[] = []
   @Input() reset: boolean = false
 
   @Output() onCreate = new EventEmitter<Circulation>()
