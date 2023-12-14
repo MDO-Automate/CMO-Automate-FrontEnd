@@ -19,7 +19,7 @@ import { MessageService } from 'primeng/api';
     AppRoutingModule,
     RatingModule,
     SliderModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [ MessageService ],
   bootstrap: [AppComponent],

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { navbarItems } from '../../config/navbarItems';
-import { NavbarItem } from '../../interfaces/navbar.interface';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   standalone: true,
@@ -12,5 +12,5 @@ import { NavbarItem } from '../../interfaces/navbar.interface';
   imports: [RouterModule, NavbarComponent ],
 })
 export class HeaderComponent {
-  navItemList: NavbarItem[] = navbarItems
+  navItemList: MenuItem[] = navbarItems
 }
