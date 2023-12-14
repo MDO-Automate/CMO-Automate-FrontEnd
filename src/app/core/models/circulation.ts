@@ -1,4 +1,4 @@
-import { Routes } from "./routes"
+import { Route } from "./routes"
 
 export interface Circulation {
   id?: number
@@ -9,7 +9,7 @@ export interface Circulation {
 export interface CirculationResponse {
   id?: number
   circulacion: number
-  linea: Routes
+  linea: Route
 }
 
 

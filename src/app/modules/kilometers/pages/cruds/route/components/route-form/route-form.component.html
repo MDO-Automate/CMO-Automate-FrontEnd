@@ -1,0 +1,137 @@
+<form [formGroup]="formRoute" class="pt-10 flex flex-col gap-5">
+
+  <div class="flex items-center justify-center">
+
+    <span class="p-float-label">
+      <input type="text" pInputText inputId="name" class="w-52 h-12 border p-2" formControlName="nombre"
+        autocomplete="off" />
+      <label htmlFor="name">Nombre</label>
+    </span>
+
+  </div>
+
+
+  <div class="grid grid-cols-4 gap-9 pt-5">
+
+    <span class="p-float-label">
+      <p-inputNumber inputId="kmItinerario1" inputStyleClass="w-52 h-12 border p-2" formControlName="kmItinerario1"
+        autocomplete="off"></p-inputNumber>
+      <label htmlFor="kmItinerario1">KM - Itinerario #1</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputNumber inputId="kmItinerario2" inputStyleClass="w-52 h-12 border p-2" formControlName="kmItinerario2"
+        autocomplete="off"></p-inputNumber>
+      <label htmlFor="kmItinerario2">KM - Itinerario #2</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputNumber inputId="kmItinerario3" inputStyleClass="w-52 h-12 border p-2" formControlName="kmItinerario3"
+        autocomplete="off"></p-inputNumber>
+      <label htmlFor="kmItinerario3">KM - Itinerario #3</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputNumber inputId="kmItinerario4" inputStyleClass="w-52 h-12 border p-2" formControlName="kmItinerario4"
+        autocomplete="off"></p-inputNumber>
+      <label htmlFor="kmItinerario4">KM - Itinerario #4</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputNumber inputId="kmItinerarioRepro1" inputStyleClass="w-52 h-12 border p-2"
+        formControlName="kmItinerarioRepro1" autocomplete="off"></p-inputNumber>
+      <label htmlFor="kmItinerarioRepro1">KM - Itinerario #1 Rep.</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputNumber inputId="kmItinerarioRepro2" inputStyleClass="w-52 h-12 border p-2"
+        formControlName="kmItinerarioRepro2" autocomplete="off"></p-inputNumber>
+      <label htmlFor="kmItinerarioRepro2">KM - Itinerario #2 Rep.</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputNumber inputId="kmItinerarioRepro3" inputStyleClass="w-52 h-12 border p-2"
+        formControlName="kmItinerarioRepro3" autocomplete="off"></p-inputNumber>
+      <label htmlFor="kmItinerarioRepro3">KM - Itinerario #3 Rep.</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputNumber inputId="kmItinerarioRepro4" inputStyleClass="w-52 h-12 border p-2"
+        formControlName="kmItinerarioRepro4" autocomplete="off"></p-inputNumber>
+      <label htmlFor="kmItinerarioRepro4">KM - Itinerario #4 Rep.</label>
+    </span>
+
+  </div>
+
+  <div class="flex items-center justify-center">
+  <div class="grid grid-cols-3 gap-9 pt-4">
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="inicioHabil" value=""
+        inputId="inicioHabil" autocomplete="off" />
+      <label htmlFor="inicioHabil">Inicio - Día Hábil</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="inicioSabado" value=""
+        inputId="inicioSabado" autocomplete="off" />
+      <label htmlFor="inicioSabado">Inicio - Sábado</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="inicioDomingo" value=""
+        inputId="inicioDomingo" autocomplete="off" />
+      <label htmlFor="inicioDomingo">Inicio - Domingo</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="finHabil" value=""
+        inputId="finHabil" autocomplete="off" />
+      <label htmlFor="finHabil">Fin - Día Hábil</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="finSabado" value=""
+        inputId="finSabado" autocomplete="off" />
+      <label htmlFor="finSabado">Fin - Sábado</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask styleClass="w-52 h-12 border p-2" mask="99:99:00" formControlName="finDomingo" value=""
+        inputId="finDomingo" autocomplete="off" />
+      <label htmlFor="finDomingo">Fin - Domingo</label>
+    </span>
+
+  </div>
+</div>
+
+  <div class="grid grid-cols-4 gap-9 pt-5">
+
+    <span class="p-float-label">
+      <p-dropdown inputId="itinerario1" formControlName="itinerario1" [options]="itineraries" optionLabel="nombre"
+        optionValue="id" styleClass="w-52 border" placeholder="Selecciona el itinerario" />
+      <label htmlFor="itinerario1">Itinerario #1</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-dropdown inputId="itinerario2" formControlName="itinerario2" [options]="itineraries" optionLabel="nombre"
+        optionValue="id" styleClass="w-52 border" placeholder="Selecciona el itinerario" />
+      <label htmlFor="itinerario2">Itinerario #2</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-dropdown inputId="itinerario3" formControlName="itinerario3" [options]="itineraries" optionLabel="nombre"
+        optionValue="id" styleClass="w-52 border" placeholder="Selecciona el itinerario" />
+      <label htmlFor="itinerario3">Itinerario #3</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-dropdown inputId="itinerario4" formControlName="itinerario4" [options]="itineraries" optionLabel="nombre"
+        optionValue="id" styleClass="w-52 border" placeholder="Selecciona el itinerario" />
+      <label htmlFor="itinerario4">Itinerario #4</label>
+    </span>
+
+  </div>
+  <app-button-primary icon="save" class="pt-5" [textLabel]="type === CREATE ? 'Guardar' : 'Actualizar'"
+    (onClick)="submit()" />
+</form>

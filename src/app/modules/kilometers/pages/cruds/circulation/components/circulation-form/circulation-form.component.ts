@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Routes } from '@app/core/models/routes';
+import { Route, RouteResponse } from '@app/core/models/routes';
 
 import { Circulation, CirculationResponse } from '@app/core/models/circulation';
 import { CrudString } from '@app/core/types/crud';
@@ -24,7 +24,7 @@ export class CirculationFormComponent implements OnChanges {
 
   @Input() circulation: CirculationResponse | null = null
   @Input() type: CrudString = this.CREATE
-  @Input() lines: Routes[] = []
+  @Input() lines: RouteResponse[] = []
   @Input() reset: boolean = false
 
   @Output() onCreate = new EventEmitter<Circulation>()
@@ -36,7 +36,7 @@ export class CirculationFormComponent implements OnChanges {
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['reset']?.currentValue) this.formCirculation.reset() 
+    if(changes['reset']?.currentValue) this.formCirculation.reset()
     if (changes['circulation']) {
       this.formCirculation.get('circulacion')?.setValue(this.circulation?.circulacion)
       this.formCirculation.get('linea')?.setValue(this.circulation?.linea.id)
@@ -49,10 +49,10 @@ export class CirculationFormComponent implements OnChanges {
 
     if (circulationError || lineError) {
       this.messageService.add(
-        { 
-          severity: 'error', 
-          summary: 'Ha ocurrido un error', 
-          detail: 'Hay campos vacíos' 
+        {
+          severity: 'error',
+          summary: 'Ha ocurrido un error',
+          detail: 'Hay campos vacíos'
         }
       )
       return false
@@ -61,15 +61,19 @@ export class CirculationFormComponent implements OnChanges {
   }
 
   submit() {
-    if (!this.validatedForm()) return
+    if (!this.validatedForm()) {
+    this.reset = false
+    return
+  }
+  this.reset = true
     if (this.type === this.CREATE) {
       this.onCreate.emit(this.formCirculation.value)
       return
     }
     if (this.type === this.UPDATE) {
-      this.onEdit.emit({ 
-        id: this.circulation?.id, 
-        ...this.formCirculation.value 
+      this.onEdit.emit({
+        id: this.circulation?.id,
+        ...this.formCirculation.value
       })
       return
     }

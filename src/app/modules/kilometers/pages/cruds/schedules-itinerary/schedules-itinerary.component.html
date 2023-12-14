@@ -1,0 +1,22 @@
+<h1 class="font-bold py-5 text-xl">Horarios - Itinerario</h1>
+<app-crud-content
+    class=""
+    [headers]="['Linea', 'Itinerario','Sentido','Inicio - Lun. a Vie.','Fin - Lun. a Vie.','Inicio - Sábado','Fin - Sábado','Inicio - Domingo','Fin - Domingo']"
+    [data]="schedulesItinerariesTable"
+    (onItemEdit)="onItemEdit($event)"
+    (onItemDelete)="deleteSchedulesItinerary($event)"
+    (onCreateButton)="onButtonCreate()"
+    [modalVisible]="modalVisible"
+>
+<app-schedules-itinerary-form
+        [type]="typeForm"
+        [reset]="resetForm"
+        [schedulesItinerary]="schedulesItinerary"
+        [lines]="lines"
+        [itineraries]="itineraries"
+        (onCreate)="createSchedulesItinerary($event)"
+        (onEdit)="updateSchedulesItinerary($event)"
+    />
+
+</app-crud-content>
+<p-toast/>

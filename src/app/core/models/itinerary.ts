@@ -1,4 +1,4 @@
 export interface Itinerary {
-    id: number
+    id?: number
     nombre: string
 }

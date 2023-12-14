@@ -24,20 +24,18 @@ import { CirculationComponent } from "./circulation.component";
     CirculationComponent
   ],
   imports: [
-    CommonModule,
-    CirculationRoutingModule,
-    SharedModule,
-
-    // Componentes
-    TableModule,
-    ButtonPrimaryComponent,
     BtnConfirmComponent,
+    ButtonPrimaryComponent,
+    CirculationRoutingModule,
+    CommonModule,
+    CrudContentComponent,
     DialogModule,
-    ToastModule,
+    DropdownModule,
     InputNumberModule,
     ReactiveFormsModule,
-    DropdownModule,
-    CrudContentComponent
+    SharedModule,
+    TableModule,
+    ToastModule,
   ],
   providers: [
     MessageService

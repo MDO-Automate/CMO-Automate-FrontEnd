@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Routes } from '@app/core/models/routes';
+import { Route, RouteResponse } from '@app/core/models/routes';
 
 import { MessageService } from 'primeng/api';
 
@@ -15,7 +15,7 @@ import { CirculationsService } from '@app/modules/kilometers/services/circulatio
   styleUrls: ['./circulation.component.css'],
 })
 export class CirculationComponent implements OnInit {
-  lines: Routes[] = [];
+  lines: RouteResponse[] = [];
   modalVisible = false;
   circulations: CirculationResponse[] = [];
   circulation: CirculationResponse | null = null;
@@ -50,7 +50,7 @@ export class CirculationComponent implements OnInit {
 
   onButtonCreate() {
     this.typeForm = 'Create';
-    this.resetForm = true
+    this.resetForm = false
     this.modalVisible = true;
     this.circulation = null;
   }

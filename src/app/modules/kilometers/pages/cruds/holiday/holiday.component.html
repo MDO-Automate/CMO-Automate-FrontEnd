@@ -1,0 +1,20 @@
+<h1 class="font-bold py5 text-xl">Festivos</h1>
+<app-crud-content
+  class="w-1/2"
+  [headers]="['Fecha','Nombre']"
+  [data]="holidaysTable"
+  (onItemEdit)="onItemEdit($event)"
+  (onItemDelete)="deleteHoliday($event)"
+  (onCreateButton)="onButtonCreate()"
+  [modalVisible]="modalVisible"
+>
+  <app-holiday-form
+    [type]="typeForm"
+    [reset]="resetForm"
+    [holiday]="holiday"
+    (onCreate)="createHoliday($event)"
+    (onEdit)="updateHoliday($event)"
+  />
+
+</app-crud-content>
+<p-toast/>

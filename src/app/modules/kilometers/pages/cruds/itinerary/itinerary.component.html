@@ -1,0 +1,21 @@
+<h1 class="font-bold py-5 text-xl">Itinerarios</h1>
+
+<app-crud-content
+  class="w-1/2"
+  [headers]="['Nombre']"
+  [data]="itinerariesTable"
+  (onItemEdit)="onItemEdit($event)"
+  (onItemDelete)="deleteItinerary($event)"
+  (onCreateButton)="onButtonCreate()"
+  [modalVisible]="modalVisible"
+>
+<app-itinerary-form
+  [type]="typeForm"
+  [reset]="resetForm"
+  [itinerary]="itinerary"
+  (onCreate)="createItinerary($event)"
+  (onEdit)="updateItinerary($event)"
+
+/>
+</app-crud-content>
+<p-toast/>
