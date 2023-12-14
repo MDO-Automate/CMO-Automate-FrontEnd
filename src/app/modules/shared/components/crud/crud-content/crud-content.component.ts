@@ -28,6 +28,7 @@ export class CrudContentComponent {
   @Input() headers: string[] = []
   @Input() modalVisible: boolean = false
   @Input() resetForm: boolean = false
+  @Input() scroll: boolean = false
 
   @Output() onItemEdit = new EventEmitter<any>()
   @Output() onItemDelete = new EventEmitter<any>()
