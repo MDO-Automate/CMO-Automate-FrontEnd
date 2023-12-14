@@ -25,7 +25,7 @@ export class KmGeneralService {
     }
 
     filterByMonthAndRoute(date: string, route: number){
-        return this.http.get<kmGeneral[]>(`${this.baseUri}/informe-general?fecha=${date}&ruta=${route}`)
+        return this.http.get<kmGeneral[]>(`${this.baseUri}/informe-general?fecha=${date}&linea=${route}`)
             .pipe(catchError(err =>  throwError(()=> err)))
     }
 }

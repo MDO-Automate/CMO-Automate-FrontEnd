@@ -28,6 +28,7 @@ import { CirculationComponent } from "./circulation.component";
     CirculationRoutingModule,
     SharedModule,
 
+    // Componentes
     TableModule,
     ButtonPrimaryComponent,
     BtnConfirmComponent,

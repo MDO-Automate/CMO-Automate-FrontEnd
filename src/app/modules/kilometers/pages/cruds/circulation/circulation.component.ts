@@ -56,6 +56,7 @@ export class CirculationComponent implements OnInit {
   }
 
   onItemEdit(item: Circulation) {
+    console.log(item)
     this.typeForm = 'Update';
     this.modalVisible = true;
     this.circulation = this.circulations.find((i) => i.id === item.id) || null;

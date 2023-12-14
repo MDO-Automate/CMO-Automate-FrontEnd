@@ -41,7 +41,7 @@ export interface Kilometers {
 
 export interface KmFilter {
     [any: string]: any
-    ruta: number
+    linea: number
     fecha: string,
     itinerario: number
     criterio: number

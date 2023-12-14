@@ -25,7 +25,7 @@ export class KmFilterComponent implements OnInit {
 
 
   filterForm : FormGroup = this.fb.group({
-    ruta: [null, Validators.required],
+    linea: [null, Validators.required],
     fecha: [null, Validators.required],
     itinerario: [null],
     criterio: [null],
@@ -64,7 +64,7 @@ export class KmFilterComponent implements OnInit {
         today: 'Hoy',
         clear: 'Limpiar',
       }
-    );
+    )
     
   }
 
@@ -73,7 +73,7 @@ export class KmFilterComponent implements OnInit {
   }
 
   submit(){
-    this.filterForm.get('ruta')?.markAsTouched()
+    this.filterForm.get('linea')?.markAsTouched()
     this.filterForm.get('fecha')?.markAsTouched()
     if(this.filterForm.valid){
       this.onDataFilter.emit(this.filterForm.value)

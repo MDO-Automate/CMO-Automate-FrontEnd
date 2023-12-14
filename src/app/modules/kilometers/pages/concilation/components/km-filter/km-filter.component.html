@@ -12,7 +12,7 @@
           [filter]="true"
           inputId="criterio"
           styleClass="w-52 border "
-          formControlName="ruta"
+          formControlName="linea"
           placeholder="Seleccionar ruta"
           [required]="true"
           [options]="lines || []"
@@ -25,8 +25,8 @@
       </div>
       <div
         *ngIf="
-          (this.filterForm.get('ruta')?.touched &&
-            this.filterForm.get('ruta')?.errors)
+          (this.filterForm.get('linea')?.touched &&
+            this.filterForm.get('linea')?.errors)
         "
         class="absolute top-14 alert bg-warning text-sm"
       >

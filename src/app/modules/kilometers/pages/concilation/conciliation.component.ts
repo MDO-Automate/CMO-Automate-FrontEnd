@@ -22,7 +22,7 @@ export class ConciliationComponent {
 
   onFilter(kmFilter: KmFilter){
 
-    const { fecha, ruta } = kmFilter
+    const { fecha, linea } = kmFilter
 
     const changeTimezone = (date: string)=> {
       const dateTimeZone = new Date(date).toLocaleString('es-ES', {
@@ -56,7 +56,7 @@ export class ConciliationComponent {
       }
     })
 
-    this.kmGeneralService.filterByMonthAndRoute(fecha, ruta).subscribe({
+    this.kmGeneralService.filterByMonthAndRoute(fecha, linea).subscribe({
       next: (data: any)=>  { 
         this.kmGeneral = data.map((item: any) => ({
           ...item, 
