@@ -144,10 +144,11 @@ export class RouteFormComponent implements OnChanges, OnInit {
     }
 
     this.reset = true
-    this.onChargeForm()
 
     if (this.type === this.CREATE) {
       this.onCreate.emit(this.formRoute.value)
+      this.onChargeForm()
+
       return
     }
     if (this.type === this.UPDATE) {
@@ -155,6 +156,8 @@ export class RouteFormComponent implements OnChanges, OnInit {
         id: this.route?.id,
         ...this.formRoute.value
       })
+      this.onChargeForm()
+
       return
     }
   }
