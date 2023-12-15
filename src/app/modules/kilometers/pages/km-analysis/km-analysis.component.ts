@@ -37,8 +37,8 @@ export class KmAnalysisComponent {
   private processResponse(name: string){
     return {
       next: ()=> { this.requestWithoutError() },
-      error: () => {
-        this.showErrorMessage(name)
+      error: (error: any) => {
+        this.showErrorMessage(name, error)
       }
     }
   }
@@ -56,11 +56,13 @@ export class KmAnalysisComponent {
     this.dataElectric = event.originalEvent.body.data.resumenElec
     this.generalData = event.originalEvent.body.data.resumenGeneral
     this.dataAnalysis = this.data.filter(item =>  
-      item.distancia > (item.media + this.distanciaSobreMedia) || parseInt(item.porcParada.split('%')[0]) < 55
+      item.distancia > (item.media + this.distanciaSobreMedia)
     )
     this.dataDetails = this.data.filter(
-      item =>  item.distancia < (item.media + this.distanciaSobreMedia ) || parseInt(item.porcParada.split('%')[0]) > 55 
+      item =>  item.distancia < (item.media + this.distanciaSobreMedia )
     )
+
+    console.log(this.dataDetails.length)
     this.isLoading = false
     this.lodadedData = true
   }
@@ -84,13 +86,22 @@ export class KmAnalysisComponent {
     const dataCombonine = [ ...this.dataAnalysis, ...this.dataDetails  ]
 
     this.kmAnalysisService.saveData(dataCombonine)
-      .subscribe(this.processResponse('análisis de kilómetros'))
+      .subscribe({
+        next: ()=> {
+          this.kmGeneralService.saveData(this.generalData)
+          .subscribe(this.processResponse('informe general'))
+        
+          this.kmElectricService.saveData(this.dataElectric)
+            .subscribe(this.processResponse('resumen de electricas'))
+          
+          this.requestErrorCount += 1
+          },
+        error: (err: any)=> {
+          this.showErrorMessage('Análisis de kilometros', err)
+          this.changeIsLoading(false)
+        }
+      })
 
-    this.kmGeneralService.saveData(this.generalData)
-      .subscribe(this.processResponse('informe general'))
-    
-    this.kmElectricService.saveData(this.dataElectric)
-      .subscribe(this.processResponse('resumen de electricas'))
   }
 
   requestWithoutError(){
@@ -108,12 +119,14 @@ export class KmAnalysisComponent {
     }
   }
 
-  showErrorMessage(typeError: string){
+  showErrorMessage(typeError: string, error: any){
+    let detail = `No se pudo cargar la información relacionada al ${typeError}, porfavor intentelo más tarde.`
+    if(error.error.error == 'DUPLICIDAD') detail = error.error.message
     this.messageService.add(
       { 
         severity: 'error', 
         summary: 'Error', 
-        detail: `No se pudo cargar la información relacionada al ${typeError}, porfavor intentelo más tarde. `
+        detail
       }
     )
   }
