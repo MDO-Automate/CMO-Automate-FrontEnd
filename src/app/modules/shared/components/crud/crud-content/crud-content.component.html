@@ -6,7 +6,7 @@
         (onEdit)="onEdit($event)"
         (onDelete)="onDelete($event)"
     />
-    <app-crud-modal [typeModal]="type" (onClose)="closeModal()" [visible]="modalVisible" >
+    <app-crud-modal [scroll]="scroll" [typeModal]="type" (onClose)="closeModal()" [visible]="modalVisible" >
         <ng-content></ng-content>
     </app-crud-modal>
 </section>

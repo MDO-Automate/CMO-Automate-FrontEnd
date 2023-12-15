@@ -1,15 +1,15 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Holiday } from '@app/core/models/holiday';
 import { CrudString } from '@app/core/types/crud';
-import { MessageService } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-holiday-form',
   templateUrl: './holiday-form.component.html',
   styleUrls: ['./holiday-form.component.css'],
 })
-export class HolidayFormComponent implements OnChanges{
+export class HolidayFormComponent implements OnChanges, OnInit{
   CREATE: 'Create' = 'Create'
   UPDATE: 'Update' = 'Update'
 
@@ -27,8 +27,24 @@ export class HolidayFormComponent implements OnChanges{
 
   constructor(
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private primeNGConfig: PrimeNGConfig
     ) {}
+
+  ngOnInit(): void {
+    this.primeNGConfig.setTranslation(
+      {
+        firstDayOfWeek: 1,
+        dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+        dayNamesShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+        dayNamesMin: ['Do', 'Lu', 'Ma', 'Mie', 'Jue', 'Vie', 'Sab'],
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+        today: 'Hoy',
+        clear: 'Limpiar',
+      }
+    );
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['reset']?.currentValue) this.formHoliday.reset()
@@ -37,6 +53,8 @@ export class HolidayFormComponent implements OnChanges{
       this.formHoliday.get('nombre')?.setValue(this.holiday?.nombre)
     }
   }
+
+
 
   validatedForm() {
     const fechaError = this.formHoliday.get('fecha')?.errors

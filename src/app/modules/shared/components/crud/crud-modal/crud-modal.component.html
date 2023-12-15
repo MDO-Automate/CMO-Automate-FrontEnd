@@ -1,5 +1,5 @@
 <p-dialog
-  styleClass="overflow-scroll"
+  [styleClass]="overScroll"
   [header]="typeModal === 'Create' ? 'Agregar registro': 'Editar registro'"
   [(visible)]="visible"
   (onHide)="emitOnClose()"
