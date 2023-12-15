@@ -62,7 +62,7 @@ export class ItineraryComponent implements OnInit{
   }
 
   deleteItinerary(itinerary: Itinerary) {
-    this.itinerariesService
+      this.itinerariesService
       .delete(itinerary?.id || 0)
       .subscribe(this.handlerResponseCrud('eliminado'))
   }

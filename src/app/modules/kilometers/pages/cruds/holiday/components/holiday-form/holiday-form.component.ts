@@ -21,6 +21,7 @@ export class HolidayFormComponent implements OnChanges, OnInit{
   @Input() holiday: Holiday | null = null
   @Input() type: CrudString = this.CREATE
   @Input() reset: boolean = false
+  @Input() isDisabled: boolean = false
 
   @Output() onCreate = new EventEmitter<Holiday>()
   @Output() onEdit = new EventEmitter<Holiday>()
@@ -32,6 +33,7 @@ export class HolidayFormComponent implements OnChanges, OnInit{
     ) {}
 
   ngOnInit(): void {
+    //this.isDisabled = true
     this.primeNGConfig.setTranslation(
       {
         firstDayOfWeek: 1,
