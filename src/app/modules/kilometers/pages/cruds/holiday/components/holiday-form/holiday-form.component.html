@@ -1,7 +1,7 @@
 <form [formGroup]="formHoliday" class="pt-10 flex flex-col gap-5">
   <div class="flex gap-9">
     <span class="p-float-label">
-      <p-calendar dateFormat="yy-mm-dd" dataType="string" formControlName="fecha" value="" inputId="date"
+      <p-calendar [disabled]="isDisabled" dateFormat="yy-mm-dd" dataType="string" formControlName="fecha" value="" inputId="date"
       inputStyleClass="w-32 h-12 border p-2 " autocomplete="off" [showIcon]="true" styleClass=" border rounded-l"/>
       <label htmlFor="date">Fecha</label>
     </span>

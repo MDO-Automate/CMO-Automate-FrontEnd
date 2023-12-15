@@ -13,9 +13,11 @@ export class HolidayComponent implements OnInit {
 
   modalVisible = false
   holidaysTable: Holiday[] = []
+  holidays: Holiday[] = []
   holiday: Holiday | null = null
   typeForm: CrudString = 'Create'
   resetForm = false
+  isDisabled: boolean = false
 
   constructor(
     private messageService: MessageService,
@@ -29,7 +31,7 @@ export class HolidayComponent implements OnInit {
   getHolidays() {
     this.holidaysService.getAll()
       .subscribe({
-        next: (data) => {this.holidaysTable = data},
+        next: (data) => this.assignHoliday(data),
         error: (error) => console.log(error)
       })
   }
@@ -39,12 +41,14 @@ export class HolidayComponent implements OnInit {
     this.resetForm = false
     this.modalVisible = true
     this.holiday = null
+    this.isDisabled = false
   }
 
   onItemEdit(item: Holiday) {
+    this.isDisabled = true
     this.typeForm = 'Update'
     this.modalVisible = true
-    this.holiday = this.holidaysTable.find((i) => i.fecha === item.fecha) || null
+    this.holiday = this.holidays.find((i) => this.formatDate(i.fecha || '') === item.fecha) || null
   }
 
   createHoliday(holiday: Holiday) {
@@ -65,6 +69,26 @@ export class HolidayComponent implements OnInit {
     this.holidaysService
       .delete(holiday?.fecha || '')
       .subscribe(this.handlerResponseCrud('eliminado'))
+  }
+
+  formatDate(date: string) {
+    const day = date?.split('-')[2]
+    const month = date?.split('-')[1]
+    return `${day}/${month}`
+
+  }
+
+  assignHoliday(data: Holiday[]) {
+    this.holidays = data;
+    this.holidaysTable = this.holidays.map(
+      ({ fecha, nombre }) => {
+        const circulacionItem: Holiday = {
+          fecha: this.formatDate(fecha || ''),
+          nombre,
+        }
+        return circulacionItem;
+      }
+    );
   }
 
   showAlert(status: string, title: string, message: string ){
