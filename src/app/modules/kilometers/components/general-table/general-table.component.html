@@ -1,6 +1,6 @@
 <p-table class="p-10" [resizableColumns]="true" [value]="data" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
-        <tr>
+        <tr class="text-sm">
             <th>Fecha</th>
             <th>Itinerario 1</th>
             <th>Itinerario 2</th>
@@ -14,7 +14,7 @@
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-km>
-        <tr>
+        <tr class="text-sm">
             <td>{{ km.fecha }}</td>
             <td>{{ km.itinerario1.toFixed(2) }}</td>
             <td>{{ km.itinerario2.toFixed(2) }}</td>

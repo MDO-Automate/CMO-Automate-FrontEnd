@@ -1,4 +1,6 @@
-<section>
+<main>
+    <h1 class="font-bold py-5 text-lg text-primary">{{title}}</h1>
+    <hr>
     <app-button-primary (onClick)="onCreate()" icon="plus" class="pt-5" textLabel="Agregar" />
     <app-crud-table
         [headers]="headers"
@@ -9,4 +11,4 @@
     <app-crud-modal [scroll]="scroll" [typeModal]="type" (onClose)="closeModal()" [visible]="modalVisible" >
         <ng-content></ng-content>
     </app-crud-modal>
-</section>
+</main>

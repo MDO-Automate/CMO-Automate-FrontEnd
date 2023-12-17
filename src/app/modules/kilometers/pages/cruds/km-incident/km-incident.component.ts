@@ -28,7 +28,9 @@ export class KmIncidentComponent implements OnInit{
   getKmIncidents() {
     this.kmIncidentsService.findAll()
       .subscribe({
-        next: (data) => this.kmIncidentsTable = data,
+        next: (data) => this.kmIncidentsTable = data.filter(
+          item => item.id !== 0 && item.id !== 1
+        ),
         error: (error) => console.log(error)
       })
   }

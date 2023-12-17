@@ -11,7 +11,8 @@
           [showClear]="true"
           [filter]="true"
           inputId="criterio"
-          styleClass="w-52 border "
+          styleClass="w-52 border"
+          panelStyleClass="text-sm"
           formControlName="linea"
           placeholder="Seleccionar ruta"
           [required]="true"
@@ -30,7 +31,7 @@
         "
         class="absolute top-14 alert bg-warning text-sm"
       >
-        <span>La ruta es requerida.</span>
+        <span class="text-sm">La ruta es requerida.</span>
       </div>
     </div>
 
@@ -38,11 +39,13 @@
     <div class="w-52 card flex flex-col justify-between gap-2 relative">
       <p-calendar
         placeholder="Fecha"
-        styleClass=" border rounded-l"
+        styleClass=" border rounded-l text-sm"
+        panelStyleClass="text-sm"
         inputStyleClass="p-4 h-12 border rounded-l"
         dataType="string"
         dateFormat="yy-mm-dd"
         formControlName="fecha"
+        [touchUI]="true"
         [showIcon]="true"
         [showClear]="true"
       >
@@ -51,7 +54,7 @@
         *ngIf="filterForm.get('fecha')?.touched && filterForm.get('fecha')?.errors"
         class="absolute top-14 alert bg-warning text-sm"
       >
-        <span>La fecha es requerida.</span>
+        <span class="text-sm">La fecha es requerida.</span>
       </div>
     </div>
 
@@ -60,6 +63,7 @@
       <p-dropdown
         [showClear]="true"
         inputId="itinerario"
+        panelStyleClass="text-sm"
         styleClass="w-52 border"
         formControlName="itinerario"
         optionLabel="nombre"
@@ -76,6 +80,7 @@
     <div class="card flex justify-content-center p-float-label">
       <p-dropdown
         [showClear]="true"
+        panelStyleClass="text-sm"
         styleClass="border w-52"
         formControlName="criterio"
         [options]="criteries || []"
@@ -92,7 +97,7 @@
     <span class="p-float-label">
       <p-inputNumber
         inputId="km-inicial"
-        inputStyleClass="w-28 h-12 border p-2"
+        inputStyleClass="w-28 h-12 border p-2 text-sm"
         inputId="integeronly"
         formControlName="kmInicial"
       ></p-inputNumber>
@@ -102,7 +107,7 @@
     <span class="p-float-label">
       <p-inputNumber
         inputId="km-final"
-        inputStyleClass="w-28 border h-12 p-2"
+        inputStyleClass="w-28 border h-12 p-2 text-sm"
         inputId="integeronly"
         formControlName="kmFinal"
       ></p-inputNumber>
@@ -111,18 +116,16 @@
   </div>
 
   <div class="flex justify-end gap-5">
-    <p-button
-      styleClass="p-3 font-bold bg-transparent border-2 border-primary text-primary rounded-xl hover:bg-primary hover:text-white"
+    <app-button-primary
       type="submit"
-      icon="pi pi-filter"
-      label="Filtrar"
-    ></p-button>
-    <p-button
-      styleClass="p-3 bg-transparent border-2 border-primary text-primary rounded-xl hover:bg-primary hover:text-white"
+      icon="filter"
+      textLabel="Filtrar"
+    ></app-button-primary>
+    <app-button-primary
       (onClick)="clear()"
       type="button"
-      icon="pi pi-eraser"
-      label="Limpiar"
-    ></p-button>
+      icon="eraser"
+      textLabel="Limpiar"
+    ></app-button-primary>
   </div>
 </form>

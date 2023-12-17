@@ -1,5 +1,5 @@
 <div class="card p-2 rounded-2xl mb-5">
-  <p-toast></p-toast>
+  <p-toast styleClass="text-sm"></p-toast>
   <p-tabView styleClass="p-0">
     <p-tabPanel
       styleClass="border-2"
@@ -22,7 +22,10 @@
         />
       </div>
 
-      <h2 class="font-bold">Línea: {{ generalData[0].linea }}</h2>
+      <h2 class="font-bold my-5 flex gap-2 text-sm">
+        <span>Línea: {{ generalData[0].linea }} </span> 
+        <span>Fecha: {{ generalData[0].fecha }} </span> 
+      </h2>
       <p-tabPanel header="Novedades">
         <app-km-table
           *ngIf="dataAnalysis.length > 0"

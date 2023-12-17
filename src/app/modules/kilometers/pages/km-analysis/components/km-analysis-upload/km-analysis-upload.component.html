@@ -1,13 +1,13 @@
 <div class="flex flex-col gap-5">
-  <p-toast></p-toast>
+  <p-toast styleClass="text-sm"></p-toast>
   <h2 class="font-bold">Indicaciones para subir archivo</h2>
-  <ul>
+  <ul class="text-sm">
     <li>1. Haz clic en el botón "Seleccionar informe de servicio".</li>
     <li>2. Seleccionar el archivo del informe de servicio que desea subir.</li>
     <li>3. Haz clic en el botón "Subir informe de servicio" que aparece posteriormente de seleccionar el archivo.</li>
   </ul>
   <p-fileUpload
-    styleClass="bg-primary"
+    styleClass="bg-primary text-sm"
     mode="basic"
     invalidFileTypeMessageDetail="debe de tener la extensión .xls"
     invalidFileTypeMessageSummary="Tipo de archivo invalido,"
@@ -33,6 +33,7 @@
   <p-messages 
     *ngIf="!isLoading"
     class="w-fit"
+    styleClass="text-sm"
     [(value)]="message" 
     [enableService]="false" 
     [closable]="false"

@@ -9,7 +9,7 @@
   [tableStyle]="{ 'min-width': '50rem' }"
 >
   <ng-template pTemplate="header">
-    <tr class="bg-primary">
+    <tr class="text-sm">
       <th>ID Sae</th>
       <th>Vehiculo</th>
       <th>Tipo</th>
@@ -48,7 +48,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-km>
-    <tr>
+    <tr class="border-b border-gray-300 text-sm">
       <td>{{ km.idSae }}</td>
       <td>{{ km.vehiculo }}</td>
       <td>{{ km.tipo }}</td>
@@ -123,25 +123,28 @@
             [options]="incidences"
             optionLabel="nombre"
             optionValue="id"
-            styleClass="w-52 border "
+            styleClass="w-52 border"
+            panelStyleClass="text-sm"
+            tooltipStyleClass="text-sm"
             [(ngModel)]="km.incidencia"
           ></p-dropdown>
         </div>
       </td>
       <td *ngIf="isConciliation">
-        <div class="flex justify-content-center ">
+        <div class="flex justify-content-center  text-sm">
           <p-dropdown
             [options]="incidences"
+            panelStyleClass="text-sm"
             optionLabel="nombre"
             optionValue="id"
-            styleClass="w-52 border "
+            styleClass="w-52 border text-sm"
             [(ngModel)]="km.incidencia.id"
           ></p-dropdown>
         </div>
       </td>
       <td *ngIf="isEditable || isConciliation">
         <textarea  
-          [disabled]="!(km.incidencia !== 1) || !(km.incidencia.id !== 1)"      
+          [disabled]="!(km.incidencia !== 0) || !(km.incidencia.id !== 0)"      
           class="textarea textarea-bordered textarea-xs w-full max-w-xs h-5 resize-none"
           [(ngModel)]="km.obs"
           rows="5"

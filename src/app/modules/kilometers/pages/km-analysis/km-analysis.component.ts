@@ -51,7 +51,7 @@ export class KmAnalysisComponent {
       km2: item.km2 || 0,
       km3: item.km3 || 0,
       km4: item.km4 || 0,
-      incidencia: 1
+      incidencia: 0
     }))
     this.dataElectric = event.originalEvent.body.data.resumenElec
     this.generalData = event.originalEvent.body.data.resumenGeneral
@@ -59,10 +59,8 @@ export class KmAnalysisComponent {
       item.distancia > (item.media + this.distanciaSobreMedia)
     )
     this.dataDetails = this.data.filter(
-      item =>  item.distancia < (item.media + this.distanciaSobreMedia )
+      item =>  item.distancia < (item.media + this.distanciaSobreMedia)
     )
-
-    console.log(this.dataDetails.length)
     this.isLoading = false
     this.lodadedData = true
   }
@@ -80,7 +78,7 @@ export class KmAnalysisComponent {
     this.requestErrorCount = 0
     this.dataDetails = this.dataDetails.map(item => ({
       ...item,
-      incidencia: 1
+      incidencia: 0
     }))
 
     const dataCombonine = [ ...this.dataAnalysis, ...this.dataDetails  ]
@@ -101,7 +99,6 @@ export class KmAnalysisComponent {
           this.changeIsLoading(false)
         }
       })
-
   }
 
   requestWithoutError(){

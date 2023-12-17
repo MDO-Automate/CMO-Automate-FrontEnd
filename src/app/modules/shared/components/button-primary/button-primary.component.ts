@@ -16,7 +16,9 @@ import { ButtonModule } from 'primeng/button';
 export class ButtonPrimaryComponent {
   @Input() textLabel: string = ''
   @Input() icon: string = ''
+  @Input() type: string = 'button'
   @Output() onClick: EventEmitter<boolean> = new EventEmitter()
+
 
   emitOnClick() {
     this.onClick.emit(true)

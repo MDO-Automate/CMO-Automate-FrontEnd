@@ -76,3 +76,9 @@
 .p-dialog-content {
   overflow-y: initial !important;
 }
+
+.p-dropdown .p-dropdown-label,
+.p-menubar .p-menuitem-link {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}

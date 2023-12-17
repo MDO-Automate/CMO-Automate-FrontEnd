@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { KmTableComponent } from '../../components/km-table/km-table.component';
 import { GeneralTableComponent } from '../../components/general-table/general-table.component';
 import { MessageService } from 'primeng/api';
+import { ButtonPrimaryComponent } from '@app/modules/shared/components/button-primary/button-primary.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MessageService } from 'primeng/api';
     BtnConfirmComponent,
     KmTableComponent,
     GeneralTableComponent,
-    ToastModule
+    ToastModule,
+    ButtonPrimaryComponent
   ],
   providers: [
     MessageService

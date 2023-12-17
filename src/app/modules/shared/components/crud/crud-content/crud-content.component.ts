@@ -24,6 +24,7 @@ export class CrudContentComponent {
 
   type: 'Update' | 'Create' = this.CREATE
 
+  @Input() title : string = ''
   @Input() data : any[] = []
   @Input() headers: string[] = []
   @Input() modalVisible: boolean = false

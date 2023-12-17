@@ -9,7 +9,7 @@
   [resizableColumns]="true"
 >
   <ng-template pTemplate="header">
-    <tr>
+    <tr class="text-sm">
       <th *ngFor="let header of headers" class="text-center">
         {{ header }}
       </th> 
@@ -17,7 +17,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-item>
-    <tr>
+    <tr class="border-b text-sm border-gray-200">
       <td class="text-center" *ngFor="let cell of getBodyItems(item)">
         {{ cell }}
       </td>
